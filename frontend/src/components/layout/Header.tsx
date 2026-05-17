@@ -4,6 +4,7 @@ import { Link } from "@/i18n/navigation";
 import { mainNav } from "@/config/navigation";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { MobileMenu } from "./MobileMenu";
+import { ThemeToggle } from "./ThemeToggle";
 
 export async function Header() {
   const t = await getTranslations("nav");
@@ -14,9 +15,8 @@ export async function Header() {
   }));
 
   return (
-    <header className="sticky top-0 z-50 border-b border-surface-border"
-      style={{ background: "rgba(17,17,17,0.97)", backdropFilter: "blur(12px)" }}
-    >
+    <header className="sticky top-0 z-50 border-b border-surface-border bg-surface-card/95 backdrop-blur-md">
+
       <div className="max-w-[1200px] mx-auto px-5 h-14 flex items-center justify-between gap-6">
 
         {/* Logo */}
@@ -49,6 +49,7 @@ export async function Header() {
             <Search size={17} />
           </button>
 
+          <ThemeToggle />
           <LanguageSwitcher />
           <MobileMenu navItems={navItems} />
         </div>

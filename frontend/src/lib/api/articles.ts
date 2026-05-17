@@ -138,7 +138,20 @@ const fallbackAuthor: Author = {
 // ── Public API ────────────────────────────────────────────────────────────────
 
 const POPULATE = "populate[author][fields][0]=name&populate[author][fields][1]=slug&populate[author][fields][2]=role&populate[featured_image][fields][0]=url&populate[featured_image][fields][1]=alternativeText";
-const POPULATE_FULL = "populate[author]=*&populate[featured_image]=*&populate[gallery]=*&populate[og_image]=*&populate[related_cars][populate][brand]=*";
+const POPULATE_FULL = [
+  "populate[author][fields][0]=name",
+  "populate[author][fields][1]=slug",
+  "populate[author][fields][2]=bio_vi",
+  "populate[author][fields][3]=bio_en",
+  "populate[author][fields][4]=role",
+  "populate[author][populate][avatar][fields][0]=url",
+  "populate[author][populate][avatar][fields][1]=alternativeText",
+  "populate[featured_image][fields][0]=url",
+  "populate[featured_image][fields][1]=alternativeText",
+  "populate[gallery][fields][0]=url",
+  "populate[gallery][fields][1]=alternativeText",
+  "populate[og_image][fields][0]=url",
+].join("&");
 
 export async function getFeaturedArticle(): Promise<ArticleCard | null> {
   try {

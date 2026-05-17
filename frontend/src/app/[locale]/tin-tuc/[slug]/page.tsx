@@ -112,6 +112,22 @@ export default async function ArticleDetailPage({ params }: { params: Promise<Pa
               dangerouslySetInnerHTML={{ __html: content }}
             />
 
+            {/* Gallery */}
+            {article.gallery && article.gallery.filter(Boolean).length > 0 && (
+              <div className="mt-8">
+                <p className="text-sm font-bold text-text-primary mb-3">
+                  {lang === "vi" ? "📷 Ảnh trong bài" : "📷 Photo Gallery"}
+                </p>
+                <div className="grid grid-cols-2 gap-2">
+                  {article.gallery.filter(Boolean).map((img, i) => (
+                    <div key={i} className="relative aspect-video rounded-lg overflow-hidden">
+                      <Image src={img!} alt={`${title} - ảnh ${i + 1}`} fill className="object-cover hover:scale-105 transition-transform duration-300" sizes="(max-width: 768px) 50vw, 400px" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
             {/* Tags */}
             {article.tags.length > 0 && (
               <div className="flex items-center flex-wrap gap-2 mt-8 pt-6 border-t border-surface-border">
