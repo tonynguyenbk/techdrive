@@ -1,5 +1,13 @@
 'use strict';
 
+const { env } = require('@strapi/utils');
+
+// ALLOWED_ORIGINS env var: comma-separated list for production
+// e.g. "https://techdrive.vercel.app,https://techdrive.vn"
+const allowedOrigins = process.env.ALLOWED_ORIGINS
+  ? process.env.ALLOWED_ORIGINS.split(',').map((o) => o.trim())
+  : ['http://localhost:3000', 'http://localhost:3001'];
+
 module.exports = [
   'strapi::logger',
   'strapi::errors',
@@ -20,7 +28,7 @@ module.exports = [
   {
     name: 'strapi::cors',
     config: {
-      origin: ['http://localhost:3000', 'http://localhost:3001', 'https://techdrive.vn'],
+      origin: allowedOrigins,
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
       headers: ['Content-Type', 'Authorization', 'Origin', 'Accept'],
       keepHeaderOnError: true,
