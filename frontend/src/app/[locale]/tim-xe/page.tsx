@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import { ChevronRight } from "lucide-react";
 import { Link } from "@/i18n/navigation";
@@ -5,6 +6,16 @@ import { getCarModels, getBrands } from "@/lib/api/cars";
 import { CarModelCard } from "@/components/cars/CarModelCard";
 import { CarFilter } from "./CarFilter";
 import { CarPagination } from "./CarPagination";
+
+export const metadata: Metadata = {
+  title: "Tìm xe",
+  description: "Tìm kiếm, so sánh xe ô tô theo hãng, phân khúc và mức giá. Thông số kỹ thuật đầy đủ, giá niêm yết cập nhật.",
+  openGraph: {
+    title: "Tìm xe | TechDrive",
+    description: "Tìm kiếm, so sánh xe ô tô theo hãng, phân khúc và mức giá tại TechDrive.",
+    type: "website",
+  },
+};
 
 type Props = {
   params: Promise<{ locale: string }>;

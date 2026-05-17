@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
@@ -12,6 +13,41 @@ import type { CarVariant } from "@/types/car";
 type Props = {
   params: Promise<{ locale: string; brand: string; slug: string }>;
 };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale, slug } = await params;
+  const lang = locale === "en" ? "en" : "vi";
+  const model = await getCarModelBySlug(slug);
+  if (!model) return { title: "Xe không tồn tại" };
+
+  const brandName = lang === "en" ? model.brand.name_en : model.brand.name_vi;
+  const description = lang === "en" ? model.description_en : model.description_vi;
+  const title = lang === "vi"
+    ? `${model.name} ${model.year_from} — Giá, Thông số & Đánh giá | TechDrive`
+    : `${model.name} ${model.year_from} — Price, Specs & Review | TechDrive`;
+  const image = model.thumbnail_url || model.gallery_urls[0];
+  const metaDescription = description ||
+    (lang === "vi"
+      ? `Xem giá, thông số kỹ thuật và đánh giá chi tiết ${model.name} ${model.year_from} tại TechDrive.`
+      : `See price, specs and review for the ${model.name} ${model.year_from} at TechDrive.`);
+
+  return {
+    title,
+    description: metaDescription,
+    openGraph: {
+      title,
+      description: metaDescription,
+      type: "website",
+      images: image ? [{ url: image, width: 1200, height: 675, alt: `${brandName} ${model.name}` }] : [],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: metaDescription,
+      images: image ? [image] : [],
+    },
+  };
+}
 
 const segmentLabels: Record<string, { vi: string; en: string }> = {
   sedan:    { vi: "Sedan",    en: "Sedan" },

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
@@ -12,6 +13,36 @@ import { ProsCons } from "@/components/articles/ProsCons";
 import { Eye, Clock, ChevronRight } from "lucide-react";
 
 type Params = { locale: string; slug: string };
+
+export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
+  const { locale, slug } = await params;
+  const lang = locale === "en" ? "en" : "vi";
+  const article = await getArticleBySlug(slug, lang);
+  if (!article) return { title: "Đánh giá không tồn tại" };
+
+  const title = (lang === "vi" ? article.seo?.meta_title || article.title_vi : article.title_en) ?? article.title_vi;
+  const description = (lang === "vi" ? article.seo?.meta_description || article.excerpt_vi : article.excerpt_en) ?? article.excerpt_vi;
+  const image = article.seo?.og_image || article.featured_image;
+  const scoreStr = article.score !== null ? ` — ${article.score}/10` : "";
+
+  return {
+    title: `${title}${scoreStr}`,
+    description,
+    openGraph: {
+      title: `${title}${scoreStr}`,
+      description,
+      type: "article",
+      publishedTime: article.published_at,
+      images: image ? [{ url: image, width: 1200, height: 675, alt: title }] : [],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${title}${scoreStr}`,
+      description,
+      images: image ? [image] : [],
+    },
+  };
+}
 
 export default async function ReviewDetailPage({ params }: { params: Promise<Params> }) {
   const { locale, slug } = await params;

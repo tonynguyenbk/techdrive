@@ -36,6 +36,29 @@ export default async function RootLayout({
     >
       <body className="min-h-full flex flex-col font-sans antialiased bg-surface text-text-primary">
         <ThemeProvider>{children}</ThemeProvider>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "TechDrive",
+              url: "https://techdrive.vn",
+              logo: "https://techdrive.vn/logo.png",
+              description: "Trang tin tức & đánh giá ô tô hàng đầu Việt Nam. Độc lập, khách quan, đáng tin cậy.",
+              sameAs: [
+                "https://facebook.com/techdrivevn",
+                "https://youtube.com/@techdrivevn",
+                "https://instagram.com/techdrivevn",
+                "https://x.com/techdrivevn",
+                "https://reddit.com/r/techdrivevn",
+                "https://tiktok.com/@techdrivevn",
+                "https://linkedin.com/company/techdrivevn",
+                "https://shopee.vn/techdrivevn",
+              ],
+            }),
+          }}
+        />
       </body>
     </html>
   );

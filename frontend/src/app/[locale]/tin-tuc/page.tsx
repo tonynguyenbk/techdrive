@@ -1,9 +1,20 @@
+import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import { getArticles, getFeaturedArticle, getMostViewed } from "@/lib/api/articles";
 import { ArticleCard } from "@/components/articles/ArticleCard";
 import { ArticleHero } from "@/components/articles/ArticleHero";
 import { MostViewedSidebar } from "@/components/articles/MostViewedSidebar";
 import { NewsFilterBar } from "@/components/articles/NewsFilterBar";
+
+export const metadata: Metadata = {
+  title: "Tin tức",
+  description: "Cập nhật tin tức xe hơi, ra mắt xe mới, thị trường ô tô Việt Nam và thế giới mỗi ngày.",
+  openGraph: {
+    title: "Tin tức ô tô | TechDrive",
+    description: "Cập nhật tin tức xe hơi, ra mắt xe mới, thị trường ô tô Việt Nam và thế giới mỗi ngày.",
+    type: "website",
+  },
+};
 
 const ITEMS_PER_PAGE = 8;
 

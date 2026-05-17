@@ -1,9 +1,20 @@
+import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import { ChevronRight } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { getBrands, getCarModels } from "@/lib/api/cars";
 import { formatPrice } from "@/lib/utils/format";
 import type { CarModel } from "@/types/car";
+
+export const metadata: Metadata = {
+  title: "Bảng giá",
+  description: "Bảng giá xe ô tô mới nhất tại Việt Nam theo từng hãng: Toyota, Honda, Hyundai, VinFast, Mercedes, BMW và nhiều hãng khác.",
+  openGraph: {
+    title: "Bảng giá xe | TechDrive",
+    description: "Bảng giá xe ô tô mới nhất tại Việt Nam cập nhật hàng tháng.",
+    type: "website",
+  },
+};
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -64,8 +75,6 @@ export default async function BangGiaPage({ params, searchParams }: Props) {
     }
     modelsByBrand.get(key)!.models.push(model);
   }
-
-  const activeBrand = brandSlug ? brands.find((b) => b.slug === brandSlug) : null;
 
   return (
     <main className="flex-1">

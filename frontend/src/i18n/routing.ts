@@ -20,6 +20,7 @@ export const routing = defineRouting({
     },
     "/so-sanh": { vi: "/so-sanh", en: "/compare" },
     "/bang-gia": { vi: "/bang-gia", en: "/prices" },
+    "/tim-kiem": { vi: "/tim-kiem", en: "/search" },
     "/tu-van": { vi: "/tu-van", en: "/advice" },
     "/video": "/video",
     "/giai-thuong": { vi: "/giai-thuong", en: "/awards" },

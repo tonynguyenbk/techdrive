@@ -1,10 +1,11 @@
 import { getTranslations } from "next-intl/server";
-import { Search } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { mainNav } from "@/config/navigation";
+import { Logo } from "./Logo";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { MobileMenu } from "./MobileMenu";
 import { ThemeToggle } from "./ThemeToggle";
+import { SearchDialog } from "./SearchDialog";
 
 export async function Header() {
   const t = await getTranslations("nav");
@@ -16,15 +17,11 @@ export async function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-surface-border bg-surface-card/95 backdrop-blur-md">
-
-      <div className="max-w-[1200px] mx-auto px-5 h-14 flex items-center justify-between gap-6">
+      <div className="max-w-[1200px] mx-auto px-5 h-16 flex items-center justify-between gap-6">
 
         {/* Logo */}
         <Link href="/" className="flex-shrink-0 select-none">
-          <span className="text-xl font-black tracking-tight">
-            <span className="text-text-primary">Tech</span>
-            <span className="text-primary">Drive</span>
-          </span>
+          <Logo className="h-12 w-auto" />
         </Link>
 
         {/* Desktop navigation */}
@@ -42,13 +39,7 @@ export async function Header() {
 
         {/* Right controls */}
         <div className="flex items-center gap-2 flex-shrink-0">
-          <button
-            className="hidden md:flex items-center justify-center w-8 h-8 rounded-lg text-text-muted hover:text-text-primary hover:bg-surface-card transition-colors cursor-pointer"
-            aria-label={t("search_placeholder")}
-          >
-            <Search size={17} />
-          </button>
-
+          <SearchDialog />
           <ThemeToggle />
           <LanguageSwitcher />
           <MobileMenu navItems={navItems} />

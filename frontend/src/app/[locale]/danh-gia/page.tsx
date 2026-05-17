@@ -1,9 +1,19 @@
+import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import { getReviews, getMostViewed } from "@/lib/api/articles";
 import { ArticleCard } from "@/components/articles/ArticleCard";
 import { MostViewedSidebar } from "@/components/articles/MostViewedSidebar";
 import { ReviewFilterBar } from "@/components/articles/ReviewFilterBar";
-import type { ReviewBadge } from "@/types/article";
+
+export const metadata: Metadata = {
+  title: "Đánh giá",
+  description: "Đánh giá xe chuyên sâu, lái thử thực tế, chấm điểm từng hạng mục — giúp bạn chọn xe đúng nhất.",
+  openGraph: {
+    title: "Đánh giá xe | TechDrive",
+    description: "Đánh giá xe chuyên sâu, lái thử thực tế, chấm điểm từng hạng mục — giúp bạn chọn xe đúng nhất.",
+    type: "website",
+  },
+};
 
 const ITEMS_PER_PAGE = 9;
 
