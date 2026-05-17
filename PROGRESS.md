@@ -114,32 +114,39 @@ d:\TechDrive\
 - [x] API client layer: `strapi.ts`, `articles.ts`, `cars.ts`
 - [x] Components: ArticleCard, MostViewedSidebar, ScoreBreakdown, ProsCons, ArticleBadge, PriceCard
 
-#### Phase 3 — Version Control
-- [x] Git repository initialized
-- [x] .gitignore configured
-- [ ] Push to GitHub remote
-- [ ] Branching strategy: `main` (stable) → `develop` (active dev)
+#### Phase 3 — Version Control & Git
+- [x] Git repository initialized, .gitignore configured
+- [x] GitHub remote: github.com/tonynguyenbk/techdrive
+- [x] 9 commits: chore setup, backend, frontend foundation, API client, components, pages, deployment config, seed data, car pages
+
+#### Phase 4 — Content & Data
+- [x] 11 car brands (Toyota, Honda, VinFast, Hyundai, Mazda, Kia, Mitsubishi, Ford, Mercedes, BMW, MG)
+- [x] 28 car models covering all major segments
+- [x] 14 articles: 7 reviews, 5 news, 2 comparisons — bilingual HTML content
+- [x] Idempotent seeder — only adds missing data on each restart
+
+#### Phase 5 — Car Pages
+- [x] `/tim-xe` — Car finder with brand/segment/price filters (URL params)
+- [x] `/bang-gia` — Price guide: all models grouped by brand in sortable table
+- [x] `CarModelCard`, `CarFilter`, `CarPagination` components
 
 ---
 
 ## 🔜 Việc cần làm tiếp theo
 
-### Ưu tiên cao (P0) — Làm ngay
-1. **Push to GitHub** — tạo remote repo, push code
-2. **Seed thêm content** — 15-20 bài viết, 20 xe phổ biến tại VN
-3. **Trang `/tim-xe`** — danh sách xe với filters (brand, segment, price, fuel type)
-4. **Trang `/bang-gia`** — bảng giá xe theo brand (dữ liệu từ car-model)
+### Ưu tiên cao (P0) — Tiếp theo
+1. **Navigation** — Thêm "Tìm xe" + "Bảng giá" vào Header, homepage brand cards link đến `/tim-xe?brand=slug`
+2. **Trang `/xe/[brand]/[slug]`** — Car detail: full specs (engine, dimensions, features), gallery, related articles, reviews
+3. **SEO** — `generateMetadata()` cho tất cả các trang
 
 ### Ưu tiên cao (P1) — Tuần này
-5. **Deploy**: Frontend → Vercel, Backend → Railway
-6. **Image integration** — Cloudinary hoặc Unsplash placeholder
-7. **SEO** — metadata, sitemap, OG tags
+4. **Deploy**: Render.com (Strapi, free) + Neon.tech (PostgreSQL, free) + Vercel (frontend, free)
+5. **Image upload** — Upload ảnh xe thật vào Strapi admin để thay placeholder
 
 ### Ưu tiên trung (P2) — Sau đó
-8. **Trang `/so-sanh`** — so sánh 2-3 xe cùng phân khúc
-9. **Trang `/xe/[brand]/[slug]`** — detail page từng xe với specs đầy đủ
-10. **Search** — Meilisearch integration, search bar
-11. **Auto-configure public permissions** — trong Strapi bootstrap (hiện tại phải làm thủ công)
+6. **Trang `/so-sanh`** — So sánh 2-3 xe side-by-side
+7. **Search** — Meilisearch hoặc Strapi built-in full-text search
+8. **Auto Strapi permissions** — Set public permissions trong bootstrap code (hiện tại manual)
 
 ### Ưu tiên thấp (P3) — Tương lai
 12. **Comment system** — Giscus hoặc custom
@@ -216,4 +223,4 @@ feat: seed data — authors, brands, models, articles
 
 ---
 
-*Cập nhật lần cuối: 2026-05-17*
+*Cập nhật lần cuối: 2026-05-17 — Session 3*
