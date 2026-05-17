@@ -1,0 +1,98 @@
+{
+  "kind": "collectionType",
+  "collectionName": "car_models",
+  "info": {
+    "singularName": "car-model",
+    "pluralName": "car-models",
+    "displayName": "Car Model",
+    "description": "Mẫu xe ô tô"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    },
+    "brand": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::car-brand.car-brand",
+      "inversedBy": "models"
+    },
+    "segment": {
+      "type": "enumeration",
+      "enum": ["sedan", "suv", "mpv", "hatchback", "pickup", "coupe", "van", "truck"],
+      "required": true
+    },
+    "body_type": {
+      "type": "string",
+      "maxLength": 50
+    },
+    "generation": {
+      "type": "string",
+      "maxLength": 20
+    },
+    "year_from": {
+      "type": "integer",
+      "required": true
+    },
+    "year_to": {
+      "type": "integer"
+    },
+    "price_from": {
+      "type": "biginteger",
+      "required": true
+    },
+    "price_to": {
+      "type": "biginteger",
+      "required": true
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["on_sale", "discontinued", "upcoming"],
+      "default": "on_sale",
+      "required": true
+    },
+    "description_vi": {
+      "type": "text"
+    },
+    "description_en": {
+      "type": "text"
+    },
+    "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "gallery": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": ["images"]
+    },
+    "our_rating": {
+      "type": "decimal",
+      "min": 0,
+      "max": 10
+    },
+    "variants": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::car-variant.car-variant",
+      "mappedBy": "model"
+    },
+    "articles": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::article.article",
+      "mappedBy": "related_cars"
+    }
+  }
+}

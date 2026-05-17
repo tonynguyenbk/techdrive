@@ -1,0 +1,134 @@
+{
+  "kind": "collectionType",
+  "collectionName": "car_variants",
+  "info": {
+    "singularName": "car-variant",
+    "pluralName": "car-variants",
+    "displayName": "Car Variant",
+    "description": "Phiên bản xe"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    },
+    "model": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::car-model.car-model",
+      "inversedBy": "variants"
+    },
+    "year": {
+      "type": "integer",
+      "required": true
+    },
+    "price": {
+      "type": "biginteger",
+      "required": true
+    },
+    "fuel_type": {
+      "type": "enumeration",
+      "enum": ["gasoline", "diesel", "electric", "hybrid", "phev"],
+      "required": true
+    },
+    "transmission": {
+      "type": "enumeration",
+      "enum": ["manual", "automatic", "cvt", "dct"],
+      "required": true
+    },
+    "drivetrain": {
+      "type": "enumeration",
+      "enum": ["fwd", "rwd", "awd", "four_wd"],
+      "required": true
+    },
+    "displacement_cc": {
+      "type": "integer"
+    },
+    "cylinders": {
+      "type": "integer"
+    },
+    "horsepower": {
+      "type": "integer",
+      "required": true
+    },
+    "torque_nm": {
+      "type": "integer",
+      "required": true
+    },
+    "fuel_consumption_combined": {
+      "type": "decimal"
+    },
+    "acceleration_0_100": {
+      "type": "decimal"
+    },
+    "top_speed_kmh": {
+      "type": "integer"
+    },
+    "electric_range_km": {
+      "type": "integer"
+    },
+    "battery_capacity_kwh": {
+      "type": "decimal"
+    },
+    "length_mm": {
+      "type": "integer",
+      "required": true
+    },
+    "width_mm": {
+      "type": "integer",
+      "required": true
+    },
+    "height_mm": {
+      "type": "integer",
+      "required": true
+    },
+    "wheelbase_mm": {
+      "type": "integer",
+      "required": true
+    },
+    "ground_clearance_mm": {
+      "type": "integer"
+    },
+    "trunk_volume_liters": {
+      "type": "integer"
+    },
+    "fuel_tank_liters": {
+      "type": "integer"
+    },
+    "curb_weight_kg": {
+      "type": "integer",
+      "required": true
+    },
+    "seating_capacity": {
+      "type": "integer",
+      "required": true,
+      "default": 5
+    },
+    "safety_features": {
+      "type": "json"
+    },
+    "comfort_features": {
+      "type": "json"
+    },
+    "tech_features": {
+      "type": "json"
+    },
+    "colors": {
+      "type": "json"
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": ["images"]
+    }
+  }
+}

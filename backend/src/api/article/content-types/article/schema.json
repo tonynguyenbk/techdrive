@@ -1,0 +1,156 @@
+{
+  "kind": "collectionType",
+  "collectionName": "articles",
+  "info": {
+    "singularName": "article",
+    "pluralName": "articles",
+    "displayName": "Article",
+    "description": "Bài viết / Đánh giá xe"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title_vi": {
+      "type": "string",
+      "required": true,
+      "maxLength": 200
+    },
+    "title_en": {
+      "type": "string",
+      "maxLength": 200
+    },
+    "slug_vi": {
+      "type": "uid",
+      "targetField": "title_vi",
+      "required": true
+    },
+    "slug_en": {
+      "type": "uid",
+      "targetField": "title_en"
+    },
+    "excerpt_vi": {
+      "type": "text",
+      "maxLength": 500
+    },
+    "excerpt_en": {
+      "type": "text",
+      "maxLength": 500
+    },
+    "content_vi": {
+      "type": "richtext"
+    },
+    "content_en": {
+      "type": "richtext"
+    },
+    "featured_image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "gallery": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": ["images"]
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": ["news", "review", "comparison", "advice", "video"],
+      "required": true,
+      "default": "news"
+    },
+    "subcategory": {
+      "type": "string",
+      "maxLength": 100
+    },
+    "tags": {
+      "type": "json"
+    },
+    "author": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::author.author",
+      "inversedBy": "articles"
+    },
+    "related_cars": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::car-model.car-model",
+      "inversedBy": "articles"
+    },
+    "score": {
+      "type": "decimal",
+      "min": 0,
+      "max": 10
+    },
+    "score_design": {
+      "type": "decimal",
+      "min": 0,
+      "max": 10
+    },
+    "score_performance": {
+      "type": "decimal",
+      "min": 0,
+      "max": 10
+    },
+    "score_comfort": {
+      "type": "decimal",
+      "min": 0,
+      "max": 10
+    },
+    "score_tech": {
+      "type": "decimal",
+      "min": 0,
+      "max": 10
+    },
+    "score_value": {
+      "type": "decimal",
+      "min": 0,
+      "max": 10
+    },
+    "pros": {
+      "type": "json"
+    },
+    "cons": {
+      "type": "json"
+    },
+    "verdict_vi": {
+      "type": "text",
+      "maxLength": 500
+    },
+    "verdict_en": {
+      "type": "text",
+      "maxLength": 500
+    },
+    "review_badge": {
+      "type": "enumeration",
+      "enum": ["first_drive", "detailed_review", "long_term", "comparison"]
+    },
+    "is_featured": {
+      "type": "boolean",
+      "default": false
+    },
+    "reading_time_minutes": {
+      "type": "integer",
+      "default": 5
+    },
+    "view_count": {
+      "type": "integer",
+      "default": 0
+    },
+    "meta_title": {
+      "type": "string",
+      "maxLength": 70
+    },
+    "meta_description": {
+      "type": "text",
+      "maxLength": 160
+    },
+    "og_image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    }
+  }
+}

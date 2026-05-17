@@ -1,0 +1,62 @@
+{
+  "kind": "collectionType",
+  "collectionName": "car_brands",
+  "info": {
+    "singularName": "car-brand",
+    "pluralName": "car-brands",
+    "displayName": "Car Brand",
+    "description": "Hãng xe ô tô"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name_vi": {
+      "type": "string",
+      "required": true
+    },
+    "name_en": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name_en",
+      "required": true
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "flag_emoji": {
+      "type": "string",
+      "maxLength": 4
+    },
+    "country_of_origin": {
+      "type": "string",
+      "maxLength": 50
+    },
+    "description_vi": {
+      "type": "text"
+    },
+    "description_en": {
+      "type": "text"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true
+    },
+    "display_order": {
+      "type": "integer",
+      "default": 0
+    },
+    "models": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::car-model.car-model",
+      "mappedBy": "brand"
+    }
+  }
+}
