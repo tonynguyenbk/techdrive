@@ -39,10 +39,12 @@
       "maxLength": 500
     },
     "content_vi": {
-      "type": "richtext"
+      "type": "customField",
+      "customField": "plugin::ckeditor5.CKEditor"
     },
     "content_en": {
-      "type": "richtext"
+      "type": "customField",
+      "customField": "plugin::ckeditor5.CKEditor"
     },
     "featured_image": {
       "type": "media",

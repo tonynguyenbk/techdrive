@@ -10,7 +10,9 @@
     "strapi": "strapi"
   },
   "dependencies": {
+    "@_sh/strapi-plugin-ckeditor": "^7.1.1",
     "@strapi/plugin-users-permissions": "5.46.0",
+    "@strapi/provider-upload-cloudinary": "^5.46.0",
     "@strapi/strapi": "5.46.0",
     "pg": "^8.13.0",
     "react": "^18.3.1",

@@ -1,7 +1,9 @@
 import { defineRouting } from "next-intl/routing";
 
+// To re-enable English: add "en" back to locales array below.
+// Pathnames already have bilingual paths defined — no other changes needed.
 export const routing = defineRouting({
-  locales: ["vi", "en"] as const,
+  locales: ["vi"] as const,
   defaultLocale: "vi",
   localePrefix: "as-needed",
   pathnames: {
