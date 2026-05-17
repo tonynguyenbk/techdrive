@@ -17,22 +17,21 @@ export function ArticleHero({ article, locale = "vi" }: Props) {
   const slug = lang === "vi" ? article.slug_vi : article.slug_en;
   const href = article.category === "review" ? `/danh-gia/${slug}` : `/tin-tuc/${slug}`;
 
+  const imageSrc = article.featured_image ||
+    `https://picsum.photos/seed/${encodeURIComponent(article.slug_vi)}/1200/675`;
+
   return (
     <Link href={href as "/"} className="group block">
       <div className="relative h-[480px] md:h-[520px] rounded-xl overflow-hidden">
         {/* Background */}
-        {article.featured_image ? (
-          <Image
-            src={article.featured_image}
-            alt={title}
-            fill
-            priority
-            className="object-cover transition-transform duration-700 group-hover:scale-105"
-            sizes="100vw"
-          />
-        ) : (
-          <div className="absolute inset-0 bg-gradient-to-br from-[#1a1a2e] via-[#16213e] to-[#0f3460]" />
-        )}
+        <Image
+          src={imageSrc}
+          alt={title}
+          fill
+          priority
+          className="object-cover transition-transform duration-700 group-hover:scale-105"
+          sizes="100vw"
+        />
 
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />

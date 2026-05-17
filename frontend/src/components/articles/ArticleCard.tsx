@@ -13,16 +13,8 @@ type Props = {
   className?: string;
 };
 
-const PLACEHOLDER_GRADIENTS = [
-  "from-[#1a1a2e] to-[#16213e]",
-  "from-[#1a2535] to-[#0d1b2a]",
-  "from-[#1f1b2e] to-[#13111c]",
-  "from-[#1a2e1a] to-[#0d1f0d]",
-];
-
-function getGradient(id: string) {
-  const idx = parseInt(id.replace(/\D/g, "") || "0") % PLACEHOLDER_GRADIENTS.length;
-  return PLACEHOLDER_GRADIENTS[idx];
+function getFallbackImage(seed: string, width = 800, height = 450) {
+  return `https://picsum.photos/seed/${encodeURIComponent(seed)}/${width}/${height}`;
 }
 
 export function ArticleCard({ article, locale = "vi", variant = "default", className }: Props) {
@@ -31,24 +23,20 @@ export function ArticleCard({ article, locale = "vi", variant = "default", class
   const slug = lang === "vi" ? article.slug_vi : article.slug_en;
   const href = article.category === "review" ? `/danh-gia/${slug}` : `/tin-tuc/${slug}`;
   const imgHeight = variant === "tall" ? "h-56" : "h-44";
-  const gradient = getGradient(article.id);
+  const imageSrc = article.featured_image || getFallbackImage(article.slug_vi);
 
   return (
     <Link href={href as "/"} className={cn("group block", className)}>
       <article className="h-full bg-surface-card rounded-card border border-surface-border hover:border-surface-border-hover transition-all duration-200 hover:-translate-y-0.5 overflow-hidden">
         {/* Image */}
         <div className={cn("relative overflow-hidden", imgHeight)}>
-          {article.featured_image ? (
-            <Image
-              src={article.featured_image}
-              alt={title}
-              fill
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            />
-          ) : (
-            <div className={cn("absolute inset-0 bg-gradient-to-br", gradient)} />
-          )}
+          <Image
+            src={imageSrc}
+            alt={title}
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
 
           {/* Overlay gradient */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />

@@ -44,21 +44,12 @@ export function CarModelCard({ model, locale = "vi" }: Props) {
       <div className="group bg-surface-elevated rounded-xl border border-surface-border hover:border-primary transition-all duration-200 overflow-hidden cursor-pointer">
         {/* Thumbnail */}
         <div className="relative h-44 bg-gradient-to-br from-[#1a1a2e] via-[#16213e] to-[#0f3460] overflow-hidden">
-          {model.thumbnail_url ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={model.thumbnail_url}
-              alt={model.name}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-            />
-          ) : (
-            <div className="w-full h-full flex items-center justify-center">
-              <div className="text-center opacity-40">
-                <div className="text-5xl mb-1">🚗</div>
-                <div className="text-xs text-white/40">{model.name}</div>
-              </div>
-            </div>
-          )}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={model.thumbnail_url || `https://picsum.photos/seed/${encodeURIComponent(model.slug)}/800/450`}
+            alt={model.name}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          />
           {/* Segment badge */}
           <div className="absolute top-3 left-3">
             <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded border ${segColor}`}>

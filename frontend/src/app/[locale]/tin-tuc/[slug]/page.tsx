@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
@@ -48,8 +49,16 @@ export default async function ArticleDetailPage({ params }: { params: Promise<Pa
         <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-8">
           {/* Article content */}
           <article>
-            {/* Hero image placeholder */}
-            <div className="relative h-[400px] rounded-xl overflow-hidden mb-6 bg-gradient-to-br from-[#1a1a2e] via-[#16213e] to-[#0f3460]">
+            {/* Hero image */}
+            <div className="relative h-[400px] rounded-xl overflow-hidden mb-6">
+              <Image
+                src={article.featured_image || `https://picsum.photos/seed/${encodeURIComponent(article.slug_vi)}/1200/675`}
+                alt={title}
+                fill
+                priority
+                className="object-cover"
+                sizes="(max-width: 1200px) 100vw, 800px"
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
               <div className="absolute top-4 left-4">
                 <ArticleBadge
