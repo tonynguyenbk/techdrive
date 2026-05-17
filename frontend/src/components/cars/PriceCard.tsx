@@ -12,7 +12,7 @@ export function PriceCard({ brand, locale = "vi" }: Props) {
   const isEmoji = !display.startsWith("http") && !display.startsWith("/");
 
   return (
-    <Link href={`/tim-xe/${brand.slug}` as "/"}>
+    <Link href={`/tim-xe?brand=${brand.slug}` as "/"}>
       <div className="group bg-surface-elevated rounded-lg p-4 text-center border border-surface-border hover:border-primary transition-all duration-200 cursor-pointer">
         {isEmoji ? (
           <div className="text-3xl mb-2">{display}</div>

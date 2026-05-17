@@ -1,6 +1,6 @@
 'use strict';
 
-const { seedAuthors, seedCarBrands, seedCarModels, seedArticles } = require('./seeds/seed-data');
+const { seedAuthors, seedCarBrands, seedCarModels, seedArticles, seedCarVariants } = require('./seeds/seed-data');
 
 function toSlug(name) {
   return name
@@ -85,6 +85,25 @@ module.exports = {
           },
         });
         strapi.log.info(`  + article: ${articleData.title_vi.substring(0, 60)}`);
+        added++;
+      }
+    }
+
+    // ── Car Variants ───────────────────────────────────────────────────────
+    for (const v of seedCarVariants) {
+      const { modelSlug, ...variantData } = v;
+      const model = await strapi.db
+        .query('api::car-model.car-model')
+        .findOne({ where: { slug: modelSlug } });
+      if (!model) continue;
+      const existing = await strapi.db
+        .query('api::car-variant.car-variant')
+        .findOne({ where: { slug: variantData.slug } });
+      if (!existing) {
+        await strapi.db.query('api::car-variant.car-variant').create({
+          data: { ...variantData, model: model.id, publishedAt: new Date() },
+        });
+        strapi.log.info(`  + variant: ${variantData.name}`);
         added++;
       }
     }
