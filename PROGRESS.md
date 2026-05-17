@@ -130,14 +130,31 @@ d:\TechDrive\
 - [x] `/bang-gia` — Price guide: all models grouped by brand in sortable table
 - [x] `CarModelCard`, `CarFilter`, `CarPagination` components
 
+#### Phase 6 — Images & Car Detail Page
+- [x] Fallback images via `picsum.photos/seed/{slug}` — consistent per item, no DB changes
+  - `ArticleCard`, `ArticleHero`, `CarModelCard`, `/tin-tuc/[slug]`, `/danh-gia/[slug]`
+  - Added `picsum.photos` + `images.unsplash.com` to `next.config.ts` remotePatterns
+- [x] `/tim-xe/[brand]/[slug]` — Car detail page with:
+  - Hero image with brand flag + segment badge + rating overlay
+  - Key specs bar (6-cell: power, torque, fuel, seats, length, rating)
+  - Variant cards (price + fuel/transmission/hp chips)
+  - Full spec table (engine+performance left | dimensions+comfort right)
+  - Features list (safety / comfort / tech)
+  - Related reviews (ArticleCard grid)
+  - Sticky sidebar: price, quick specs, other models from brand
+- [x] `getCarModelBySlug()` API function with variants populate
+- [x] `toCarVariant()` transformer — maps Strapi flat fields to CarVariant type
+- [x] 10 car variants seeded (Fortuner ×2, CX-5 ×2, CR-V ×2, VF9 ×2, Ranger ×2)
+- [x] `PriceCard` homepage brand cards now link to `/tim-xe?brand=slug` (was broken route)
+
 ---
 
 ## 🔜 Việc cần làm tiếp theo
 
 ### Ưu tiên cao (P0) — Tiếp theo
-1. **Navigation** — Thêm "Tìm xe" + "Bảng giá" vào Header, homepage brand cards link đến `/tim-xe?brand=slug`
-2. **Trang `/xe/[brand]/[slug]`** — Car detail: full specs (engine, dimensions, features), gallery, related articles, reviews
-3. **SEO** — `generateMetadata()` cho tất cả các trang
+1. **SEO** — `generateMetadata()` cho tất cả các trang (tin-tuc, danh-gia, tim-xe detail)
+2. **Bật public permissions cho `car-variant`** trong Strapi admin (Settings → Roles → Public → Car-variant: find, findOne) để variants hiển thị trong API
+3. **Image thật** — Upload ảnh xe vào Strapi media hoặc dùng URLs Cloudinary/Unsplash cụ thể từng model
 
 ### Ưu tiên cao (P1) — Tuần này
 4. **Deploy**: Render.com (Strapi, free) + Neon.tech (PostgreSQL, free) + Vercel (frontend, free)
@@ -223,4 +240,4 @@ feat: seed data — authors, brands, models, articles
 
 ---
 
-*Cập nhật lần cuối: 2026-05-17 — Session 3*
+*Cập nhật lần cuối: 2026-05-17 — Session 4*
