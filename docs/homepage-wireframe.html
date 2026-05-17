@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Homepage Wireframe — Automotive Media VN</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Be Vietnam Pro', sans-serif; background: #0a0a0a; color: #fff; }
+  
+  .page-title {
+    text-align: center; padding: 30px 20px 10px;
+    background: linear-gradient(180deg, #1a1a2e 0%, #0a0a0a 100%);
+  }
+  .page-title h1 { font-size: 14px; color: #dc2626; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 6px; }
+  .page-title h2 { font-size: 28px; font-weight: 800; color: #fff; }
+  .page-title p { font-size: 13px; color: #666; margin-top: 8px; }
+  
+  .section { max-width: 1200px; margin: 0 auto; padding: 20px; }
+  .section-label {
+    font-size: 11px; color: #dc2626; letter-spacing: 2px; text-transform: uppercase;
+    margin-bottom: 12px; font-weight: 700; border-left: 3px solid #dc2626; padding-left: 10px;
+  }
+  
+  /* === HEADER WIREFRAME === */
+  .header-wire {
+    background: #111; border-bottom: 1px solid #222; padding: 12px 20px;
+    display: flex; align-items: center; justify-content: space-between;
+    max-width: 1200px; margin: 0 auto;
+  }
+  .header-wire .logo { font-size: 22px; font-weight: 900; color: #dc2626; }
+  .header-wire .logo span { color: #fff; }
+  .header-wire nav { display: flex; gap: 20px; }
+  .header-wire nav a { color: #999; text-decoration: none; font-size: 13px; font-weight: 500; }
+  .header-wire nav a:hover { color: #fff; }
+  .header-wire .lang-toggle {
+    display: flex; gap: 4px; background: #222; border-radius: 20px; padding: 3px;
+  }
+  .header-wire .lang-toggle span {
+    padding: 4px 12px; border-radius: 16px; font-size: 11px; cursor: pointer; font-weight: 600;
+  }
+  .header-wire .lang-toggle .active { background: #dc2626; color: #fff; }
+  .header-wire .lang-toggle .inactive { color: #666; }
+
+  /* === HERO === */
+  .hero {
+    position: relative; height: 500px; overflow: hidden; margin: 0 auto;
+    max-width: 1200px; border-radius: 0 0 12px 12px;
+  }
+  .hero-bg {
+    width: 100%; height: 100%;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    position: relative;
+  }
+  .hero-bg::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 60%;
+    background: linear-gradient(transparent, rgba(0,0,0,0.9));
+  }
+  .hero-badge {
+    position: absolute; top: 24px; left: 24px; z-index: 2;
+    background: #dc2626; color: #fff; padding: 5px 14px; border-radius: 4px;
+    font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+  }
+  .hero-score {
+    position: absolute; top: 24px; right: 24px; z-index: 2;
+    background: rgba(0,0,0,0.7); backdrop-filter: blur(10px);
+    width: 56px; height: 56px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; font-weight: 900; color: #fbbf24;
+    border: 2px solid #fbbf24;
+  }
+  .hero-content {
+    position: absolute; bottom: 30px; left: 30px; right: 30px; z-index: 2;
+  }
+  .hero-content .category { color: #dc2626; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+  .hero-content h2 { font-size: 32px; font-weight: 800; line-height: 1.2; margin: 8px 0; max-width: 700px; }
+  .hero-content p { color: #999; font-size: 14px; max-width: 600px; }
+  .hero-content .meta { color: #666; font-size: 12px; margin-top: 10px; }
+  .hero-placeholder {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    font-size: 60px; opacity: 0.15; z-index: 1;
+  }
+
+  /* === GRID ARTICLES === */
+  .articles-grid {
+    display: grid; gap: 16px; margin-top: 20px;
+  }
+  .grid-2x2 { grid-template-columns: 1fr 1fr; }
+  .grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+  .grid-sidebar { grid-template-columns: 2fr 1fr; }
+
+  .card {
+    background: #141414; border-radius: 10px; overflow: hidden;
+    border: 1px solid #1f1f1f; transition: transform 0.2s, border-color 0.2s;
+    cursor: pointer;
+  }
+  .card:hover { transform: translateY(-3px); border-color: #333; }
+  .card-img {
+    height: 180px; position: relative;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .card-img.tall { height: 240px; }
+  .card-img .placeholder { font-size: 40px; opacity: 0.2; }
+  .card-img .badge {
+    position: absolute; top: 10px; left: 10px;
+    padding: 3px 10px; border-radius: 3px; font-size: 10px;
+    font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .badge-news { background: #2563eb; color: #fff; }
+  .badge-review { background: #d97706; color: #fff; }
+  .badge-ev { background: #059669; color: #fff; }
+  .badge-compare { background: #7c3aed; color: #fff; }
+  .badge-price { background: #dc2626; color: #fff; }
+  .card-img .score {
+    position: absolute; top: 10px; right: 10px;
+    background: rgba(0,0,0,0.7); backdrop-filter: blur(8px);
+    width: 36px; height: 36px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 800; color: #fbbf24; border: 1.5px solid #fbbf24;
+  }
+  .card-body { padding: 14px; }
+  .card-body .cat { font-size: 10px; color: #dc2626; text-transform: uppercase; font-weight: 700; letter-spacing: 1px; }
+  .card-body h3 { font-size: 15px; font-weight: 700; line-height: 1.35; margin: 5px 0; color: #eee; }
+  .card-body p { font-size: 12px; color: #666; line-height: 1.5; }
+  .card-body .meta { font-size: 11px; color: #555; margin-top: 8px; }
+
+  /* === SIDEBAR === */
+  .sidebar { display: flex; flex-direction: column; gap: 12px; }
+  .sidebar-card {
+    display: flex; gap: 12px; background: #141414; border-radius: 8px;
+    padding: 10px; border: 1px solid #1f1f1f; cursor: pointer;
+    transition: border-color 0.2s;
+  }
+  .sidebar-card:hover { border-color: #333; }
+  .sidebar-card .num { font-size: 24px; font-weight: 900; color: #dc2626; min-width: 30px; }
+  .sidebar-card h4 { font-size: 13px; font-weight: 600; line-height: 1.35; color: #ccc; }
+  .sidebar-card .views { font-size: 10px; color: #555; margin-top: 4px; }
+
+  /* === PRICE TABLE === */
+  .price-section { background: #111; border-radius: 12px; padding: 20px; border: 1px solid #1f1f1f; }
+  .price-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 14px; }
+  .price-card {
+    background: #1a1a1a; border-radius: 8px; padding: 14px; text-align: center;
+    border: 1px solid #222; transition: border-color 0.2s; cursor: pointer;
+  }
+  .price-card:hover { border-color: #dc2626; }
+  .price-card .brand-icon { font-size: 28px; margin-bottom: 6px; }
+  .price-card .brand-name { font-size: 13px; font-weight: 600; color: #ccc; }
+  .price-card .range { font-size: 11px; color: #dc2626; font-weight: 600; margin-top: 4px; }
+  .price-card .models { font-size: 10px; color: #555; margin-top: 2px; }
+
+  /* === COMPARE TOOL === */
+  .compare-section { background: linear-gradient(135deg, #1a1a2e, #111); border-radius: 12px; padding: 24px; border: 1px solid #1f1f1f; }
+  .compare-slots { display: flex; gap: 16px; margin-top: 16px; align-items: center; }
+  .compare-slot {
+    flex: 1; background: #1a1a1a; border: 2px dashed #333; border-radius: 10px;
+    padding: 30px 20px; text-align: center; cursor: pointer; transition: border-color 0.2s;
+  }
+  .compare-slot:hover { border-color: #dc2626; }
+  .compare-slot .plus { font-size: 30px; color: #444; }
+  .compare-slot .label { font-size: 12px; color: #555; margin-top: 6px; }
+  .compare-vs { font-size: 22px; font-weight: 900; color: #dc2626; }
+
+  /* === TOOLS SECTION === */
+  .tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 14px; }
+  .tool-card {
+    background: #141414; border: 1px solid #1f1f1f; border-radius: 10px; padding: 20px;
+    text-align: center; cursor: pointer; transition: transform 0.2s, border-color 0.2s;
+  }
+  .tool-card:hover { transform: translateY(-2px); border-color: #7c3aed; }
+  .tool-card .icon { font-size: 32px; margin-bottom: 10px; }
+  .tool-card h4 { font-size: 14px; font-weight: 700; color: #ddd; }
+  .tool-card p { font-size: 11px; color: #666; margin-top: 5px; line-height: 1.4; }
+
+  /* === SECTION HEADERS === */
+  .sh { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+  .sh h3 { font-size: 20px; font-weight: 800; }
+  .sh a { font-size: 12px; color: #dc2626; text-decoration: none; font-weight: 600; }
+
+  .divider { height: 1px; background: #1f1f1f; margin: 30px 0; }
+
+  /* === FOOTER === */
+  .footer { background: #0a0a0a; border-top: 1px solid #1a1a1a; padding: 30px 20px; margin-top: 30px; }
+  .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 30px; }
+  .footer h4 { font-size: 13px; color: #dc2626; font-weight: 700; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+  .footer p, .footer a { font-size: 12px; color: #555; text-decoration: none; display: block; margin-bottom: 6px; }
+  .footer .brand { font-size: 20px; font-weight: 900; color: #dc2626; margin-bottom: 8px; }
+  .footer .brand span { color: #fff; }
+
+  .note-box {
+    background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+    border-radius: 10px; padding: 16px 20px; margin-top: 20px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .note-box .icon { font-size: 20px; }
+  .note-box .text h4 { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+  .note-box .text p { font-size: 12px; color: rgba(255,255,255,0.8); line-height: 1.5; }
+</style>
+</head>
+<body>
+
+<div class="page-title">
+  <h1>Wireframe Mockup</h1>
+  <h2>Trang chủ — Automotive Media Vietnam</h2>
+  <p>Kết hợp phong cách TopGear + công cụ MotorTrend • Song ngữ Việt–Anh</p>
+</div>
+
+<!-- === HEADER === -->
+<div class="section" style="padding-bottom: 0;">
+  <div class="section-label">① HEADER & NAVIGATION</div>
+</div>
+<div class="header-wire">
+  <div class="logo">XE<span>REVIEW</span></div>
+  <nav>
+    <a href="#">Tin tức</a>
+    <a href="#">Đánh giá</a>
+    <a href="#">Tìm xe</a>
+    <a href="#">Bảng giá</a>
+    <a href="#">So sánh</a>
+    <a href="#">Video</a>
+    <a href="#">Tư vấn</a>
+  </nav>
+  <div class="lang-toggle">
+    <span class="active">VI</span>
+    <span class="inactive">EN</span>
+  </div>
+</div>
+
+<!-- === HERO === -->
+<div class="section">
+  <div class="section-label">② HERO — BÀI VIẾT NỔI BẬT (lấy từ TopGear)</div>
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-placeholder">🚗</div>
+    <div class="hero-badge">First Drive</div>
+    <div class="hero-score">9</div>
+    <div class="hero-content">
+      <div class="category">Đánh giá xe</div>
+      <h2>VinFast VF 9 2026: SUV điện Việt Nam có đủ sức cạnh tranh toàn cầu?</h2>
+      <p>Chúng tôi đã lái thử VF 9 bản nâng cấp 2026 hơn 1.000km từ Hà Nội đến Đà Nẵng. Đây là nhận xét chi tiết.</p>
+      <div class="meta">Nguyễn Minh Đức • 16/05/2026 • 12 phút đọc</div>
+    </div>
+  </div>
+</div>
+
+<!-- === NEWS GRID === -->
+<div class="section">
+  <div class="section-label">③ TIN TỨC MỚI NHẤT + XE XEM NHIỀU (Sidebar)</div>
+  <div class="sh">
+    <h3>Tin tức mới nhất</h3>
+    <a href="#">Xem tất cả →</a>
+  </div>
+  <div class="articles-grid grid-sidebar">
+    <div>
+      <div class="articles-grid grid-2x2">
+        <div class="card">
+          <div class="card-img"><span class="placeholder">🔋</span><span class="badge badge-ev">Xe điện</span></div>
+          <div class="card-body">
+            <div class="cat">Xe điện</div>
+            <h3>Toyota bEZ4X chính thức ra mắt tại Việt Nam, giá từ 1,2 tỷ đồng</h3>
+            <div class="meta">15/05/2026</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-img"><span class="placeholder">📋</span><span class="badge badge-news">Chính sách</span></div>
+          <div class="card-body">
+            <div class="cat">Chính sách</div>
+            <h3>Thuế tiêu thụ đặc biệt xe điện 2026: Những thay đổi quan trọng</h3>
+            <div class="meta">14/05/2026</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-img"><span class="placeholder">🏎️</span><span class="badge badge-news">Tin tức</span></div>
+          <div class="card-body">
+            <div class="cat">Ra mắt</div>
+            <h3>Hyundai Santa Fe 2026 nâng cấp bản Hybrid tại Việt Nam</h3>
+            <div class="meta">13/05/2026</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-img"><span class="placeholder">🌍</span><span class="badge badge-news">Quốc tế</span></div>
+          <div class="card-body">
+            <div class="cat">Quốc tế</div>
+            <h3>BMW i5 M60 — sedan điện mạnh nhất của BMW có gì đặc biệt?</h3>
+            <div class="meta">12/05/2026</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sidebar">
+      <div style="font-size: 14px; font-weight: 700; color: #dc2626; margin-bottom: 4px;">🔥 Xem nhiều nhất</div>
+      <div class="sidebar-card"><div class="num">1</div><div><h4>Top 10 xe bán chạy nhất tháng 4/2026</h4><div class="views">128.4K lượt xem</div></div></div>
+      <div class="sidebar-card"><div class="num">2</div><div><h4>So sánh Honda CR-V vs Mazda CX-5 2026</h4><div class="views">96.2K lượt xem</div></div></div>
+      <div class="sidebar-card"><div class="num">3</div><div><h4>VinFast VF 3 — xe điện mini giá rẻ nhất VN</h4><div class="views">84.7K lượt xem</div></div></div>
+      <div class="sidebar-card"><div class="num">4</div><div><h4>Bảng giá xe Toyota cập nhật tháng 5/2026</h4><div class="views">73.1K lượt xem</div></div></div>
+      <div class="sidebar-card"><div class="num">5</div><div><h4>Nên mua xe nào tầm 700 triệu năm 2026?</h4><div class="views">65.8K lượt xem</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- === REVIEWS === -->
+<div class="section">
+  <div class="section-label">④ ĐÁNH GIÁ XE — HỆ THỐNG CHẤM ĐIỂM /10 (lấy từ TopGear)</div>
+  <div class="sh">
+    <h3>⭐ Đánh giá xe mới nhất</h3>
+    <a href="#">Xem tất cả →</a>
+  </div>
+  <div class="articles-grid grid-3">
+    <div class="card">
+      <div class="card-img tall"><span class="placeholder">🚙</span><span class="badge badge-review">First Drive</span><span class="score">8</span></div>
+      <div class="card-body">
+        <div class="cat">Đánh giá chi tiết</div>
+        <h3>Mazda CX-80 2026: SUV 3 hàng ghế sang trọng nhất phân khúc</h3>
+        <p>Mazda CX-80 mang đến trải nghiệm lái premium hiếm có trong tầm giá 1,5 tỷ…</p>
+        <div class="meta">Trần Quốc Bảo • 10 phút đọc</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-img tall"><span class="placeholder">🚗</span><span class="badge badge-review">Đánh giá</span><span class="score">7</span></div>
+      <div class="card-body">
+        <div class="cat">Đánh giá chi tiết</div>
+        <h3>Honda Civic RS 2026: Có xứng đáng với mức giá gần 900 triệu?</h3>
+        <p>Honda Civic thế hệ mới nâng cấp nhiều công nghệ, nhưng giá cũng tăng đáng kể…</p>
+        <div class="meta">Lê Hoàng Nam • 8 phút đọc</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-img tall"><span class="placeholder">⚡</span><span class="badge badge-ev">Xe điện</span><span class="score">9</span></div>
+      <div class="card-body">
+        <div class="cat">Đánh giá dài hạn</div>
+        <h3>6 tháng với VinFast VF 8: Chi phí vận hành thực tế ra sao?</h3>
+        <p>Sau 15.000km và 6 tháng sử dụng, chúng tôi có câu trả lời chi tiết…</p>
+        <div class="meta">Nguyễn Minh Đức • 15 phút đọc</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- === PRICE TABLE === -->
+<div class="section">
+  <div class="section-label">⑤ BẢNG GIÁ XE — CẬP NHẬT HÀNG THÁNG (giá trị cao cho SEO)</div>
+  <div class="price-section">
+    <div class="sh">
+      <h3>💰 Bảng giá xe tháng 5/2026</h3>
+      <a href="#">Xem tất cả hãng →</a>
+    </div>
+    <div class="price-grid">
+      <div class="price-card"><div class="brand-icon">🇯🇵</div><div class="brand-name">Toyota</div><div class="range">360tr – 4,2 tỷ</div><div class="models">32 phiên bản</div></div>
+      <div class="price-card"><div class="brand-icon">🇯🇵</div><div class="brand-name">Honda</div><div class="range">380tr – 1,3 tỷ</div><div class="models">18 phiên bản</div></div>
+      <div class="price-card"><div class="brand-icon">🇻🇳</div><div class="brand-name">VinFast</div><div class="range">235tr – 2,1 tỷ</div><div class="models">22 phiên bản</div></div>
+      <div class="price-card"><div class="brand-icon">🇰🇷</div><div class="brand-name">Hyundai</div><div class="range">360tr – 1,6 tỷ</div><div class="models">24 phiên bản</div></div>
+      <div class="price-card"><div class="brand-icon">🇯🇵</div><div class="brand-name">Mazda</div><div class="range">479tr – 1,5 tỷ</div><div class="models">16 phiên bản</div></div>
+      <div class="price-card"><div class="brand-icon">🇰🇷</div><div class="brand-name">Kia</div><div class="range">399tr – 1,2 tỷ</div><div class="models">20 phiên bản</div></div>
+      <div class="price-card"><div class="brand-icon">🇩🇪</div><div class="brand-name">Mercedes</div><div class="range">1,4 – 16 tỷ</div><div class="models">38 phiên bản</div></div>
+      <div class="price-card"><div class="brand-icon">🇩🇪</div><div class="brand-name">BMW</div><div class="range">1,3 – 10 tỷ</div><div class="models">28 phiên bản</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- === COMPARE TOOL === -->
+<div class="section">
+  <div class="section-label">⑥ CÔNG CỤ SO SÁNH XE — TƯƠNG TÁC (lấy từ MotorTrend)</div>
+  <div class="compare-section">
+    <div class="sh">
+      <h3>⚔️ So sánh xe</h3>
+      <a href="#">So sánh nâng cao →</a>
+    </div>
+    <p style="font-size: 13px; color: #888; margin-bottom: 4px;">Chọn 2-3 xe để so sánh thông số, giá cả và điểm đánh giá</p>
+    <div class="compare-slots">
+      <div class="compare-slot"><div class="plus">+</div><div class="label">Chọn xe thứ 1</div></div>
+      <div class="compare-vs">VS</div>
+      <div class="compare-slot"><div class="plus">+</div><div class="label">Chọn xe thứ 2</div></div>
+      <div class="compare-vs">VS</div>
+      <div class="compare-slot"><div class="plus">+</div><div class="label">Chọn xe thứ 3</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- === TOOLS === -->
+<div class="section">
+  <div class="section-label">⑦ CÔNG CỤ HỮU ÍCH — TẠO GIÁ TRỊ CHO NGƯỜI DÙNG (lấy từ MotorTrend)</div>
+  <div class="sh"><h3>🛠️ Công cụ hữu ích</h3></div>
+  <div class="tools-grid">
+    <div class="tool-card">
+      <div class="icon">📊</div>
+      <h4>Định giá xe cũ</h4>
+      <p>Nhập thông tin xe của bạn, nhận ngay giá ước tính theo thị trường</p>
+    </div>
+    <div class="tool-card">
+      <div class="icon">🧮</div>
+      <h4>Tính chi phí lăn bánh</h4>
+      <p>Tính toàn bộ chi phí: thuế, phí trước bạ, đăng ký, bảo hiểm theo tỉnh/thành</p>
+    </div>
+    <div class="tool-card">
+      <div class="icon">🏆</div>
+      <h4>Xe nào phù hợp với bạn?</h4>
+      <p>Trả lời vài câu hỏi, hệ thống gợi ý xe phù hợp ngân sách và nhu cầu</p>
+    </div>
+  </div>
+</div>
+
+<!-- === NOTE === -->
+<div class="section">
+  <div class="note-box">
+    <div class="icon">💡</div>
+    <div class="text">
+      <h4>Ghi chú thiết kế</h4>
+      <p>Đây là wireframe mô tả bố cục và cấu trúc trang chủ. Thiết kế thực tế sẽ có ảnh xe chất lượng cao, hiệu ứng animation, và brand identity riêng. Mỗi section đều được gắn nhãn nguồn gốc (TopGear / MotorTrend) để thấy rõ sự kết hợp.</p>
+    </div>
+  </div>
+</div>
+
+<!-- === FOOTER === -->
+<div class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="brand">XE<span>REVIEW</span></div>
+      <p>Trang tin tức & đánh giá ô tô hàng đầu Việt Nam. Độc lập, khách quan, đáng tin cậy.</p>
+      <p style="margin-top: 12px;">© 2026 XeReview. All rights reserved.</p>
+    </div>
+    <div>
+      <h4>Chuyên mục</h4>
+      <a>Tin tức</a><a>Đánh giá xe</a><a>Bảng giá xe</a><a>Tư vấn mua xe</a><a>Video</a>
+    </div>
+    <div>
+      <h4>Công cụ</h4>
+      <a>So sánh xe</a><a>Tìm xe</a><a>Định giá xe cũ</a><a>Chi phí lăn bánh</a><a>Car of the Year VN</a>
+    </div>
+    <div>
+      <h4>Liên hệ</h4>
+      <a>Quảng cáo</a><a>Tuyển dụng</a><a>Liên hệ tòa soạn</a><a>Chính sách bảo mật</a>
+      <div style="margin-top: 12px;">
+        <span style="font-size: 11px; color: #555;">🇻🇳 Tiếng Việt &nbsp;|&nbsp; 🇬🇧 English</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
