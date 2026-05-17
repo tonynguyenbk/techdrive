@@ -1,2 +1,2 @@
-// Car components (CarCard, CarSpecs, CarGallery, ScoreCard) — to be implemented
-export {};
+export { PriceCard } from "./PriceCard";
+export { CarModelCard } from "./CarModelCard";

@@ -110,17 +110,22 @@ export async function getCarModels(options: {
   brandSlug?: string;
   segment?: string;
   status?: string;
+  minPrice?: number;
+  maxPrice?: number;
+  sort?: string;
 } = {}): Promise<{ models: CarModel[]; total: number; pageCount: number }> {
-  const { page = 1, pageSize = 12, brandSlug, segment, status = "on_sale" } = options;
+  const { page = 1, pageSize = 12, brandSlug, segment, status = "on_sale", minPrice, maxPrice, sort = "price_from:asc" } = options;
   const filters: string[] = [];
   if (status) filters.push(`filters[status][$eq]=${status}`);
   if (brandSlug) filters.push(`filters[brand][slug][$eq]=${brandSlug}`);
   if (segment) filters.push(`filters[segment][$eq]=${segment}`);
+  if (minPrice) filters.push(`filters[price_from][$gte]=${minPrice}`);
+  if (maxPrice) filters.push(`filters[price_from][$lte]=${maxPrice}`);
   const qs = [
     ...filters,
     `pagination[page]=${page}`,
     `pagination[pageSize]=${pageSize}`,
-    "sort=price_from:asc",
+    `sort=${sort}`,
     "populate[brand][fields][0]=name_vi&populate[brand][fields][1]=name_en&populate[brand][fields][2]=slug",
     "populate[gallery][fields][0]=url",
   ].join("&");
