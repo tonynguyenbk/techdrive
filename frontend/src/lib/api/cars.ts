@@ -242,3 +242,9 @@ export async function getCarModelBySlug(slug: string): Promise<CarModel | null> 
 export async function getPriceBrands(limit = 8): Promise<Brand[]> {
   return getBrands(limit);
 }
+
+export async function getCarModelsBySlug(slugs: string[]): Promise<CarModel[]> {
+  if (!slugs.length) return [];
+  const results = await Promise.all(slugs.map((s) => getCarModelBySlug(s)));
+  return results.filter(Boolean) as CarModel[];
+}

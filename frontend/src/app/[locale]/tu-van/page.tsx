@@ -22,8 +22,8 @@ const tools = [
     titleEn: "On-road Cost Calculator",
     descVi: "Tính toán chi phí thực tế khi mua xe gồm thuế, phí trước bạ, bảo hiểm, đăng ký.",
     descEn: "Calculate the true cost of buying a car including taxes, registration, and insurance.",
-    href: "/tu-van",
-    soon: true,
+    href: "/tu-van/tinh-lan-banh",
+    soon: false,
   },
   {
     icon: Search,
