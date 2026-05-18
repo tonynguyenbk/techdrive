@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { useRouter, usePathname } from "next/navigation";
 import Image from "next/image";
+import { useRouter, usePathname } from "next/navigation";
 import { Link } from "@/i18n/navigation";
 import { Plus, X, ChevronDown, ChevronUp, Check, Minus } from "lucide-react";
 import { formatPrice } from "@/lib/utils/format";
@@ -387,15 +387,15 @@ export function CarCompareView({
   lang: Lang;
 }) {
   const router = useRouter();
-  const pathname = usePathname();
+  usePathname(); // keep for potential future locale detection
   const [highlightDiff, setHighlightDiff] = useState(false);
 
   const vi = lang === "vi";
   const selectedSlugs = selectedCars.map((c) => c.slug);
 
   function updateUrl(slugs: string[]) {
-    if (slugs.length === 0) router.push(pathname);
-    else router.push(`${pathname}?cars=${slugs.join(",")}`);
+    const path = slugs.length === 0 ? "/so-sanh" : `/so-sanh?cars=${slugs.join(",")}`;
+    router.push(path);
   }
 
   function addCar(slug: string) {
