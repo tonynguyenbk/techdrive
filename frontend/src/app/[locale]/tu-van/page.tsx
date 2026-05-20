@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { ChevronRight, Lightbulb, Calculator, MapPin, Search } from "lucide-react";
+import { ChevronRight, Lightbulb, Calculator, MapPin, Search, CreditCard } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Tư vấn",
@@ -17,6 +17,15 @@ type Props = { params: Promise<{ locale: string }> };
 
 const tools = [
   {
+    icon: CreditCard,
+    titleVi: "Tính trả góp",
+    titleEn: "Loan Calculator",
+    descVi: "Tính số tiền trả góp hàng tháng, tổng lãi suất và lịch trả nợ chi tiết theo từng ngân hàng.",
+    descEn: "Calculate monthly installments, total interest and full amortization schedule by bank.",
+    href: "/tu-van/tinh-tra-gop",
+    soon: false,
+  },
+  {
     icon: Calculator,
     titleVi: "Tính chi phí lăn bánh",
     titleEn: "On-road Cost Calculator",
@@ -31,7 +40,7 @@ const tools = [
     titleEn: "Car Finder Quiz",
     descVi: "Trả lời vài câu hỏi và nhận gợi ý mẫu xe phù hợp nhất với nhu cầu của bạn.",
     descEn: "Answer a few questions and get personalized car recommendations.",
-    href: "/tim-xe",
+    href: "/tu-van/chon-xe",
     soon: false,
   },
   {

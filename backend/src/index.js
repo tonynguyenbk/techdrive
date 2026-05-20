@@ -86,6 +86,17 @@ module.exports = {
         });
         strapi.log.info(`  + article: ${articleData.title_vi.substring(0, 60)}`);
         added++;
+      } else if (!existing.content_vi || existing.content_vi.length < 20) {
+        // Article exists but has empty content — update it
+        await strapi.db.query('api::article.article').update({
+          where: { id: existing.id },
+          data: {
+            content_vi: articleData.content_vi,
+            content_en: articleData.content_en,
+          },
+        });
+        strapi.log.info(`  ~ updated content: ${articleData.title_vi.substring(0, 60)}`);
+        added++;
       }
     }
 

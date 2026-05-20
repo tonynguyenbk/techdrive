@@ -216,12 +216,22 @@ export async function getCarModels(options: {
   }
 }
 
+const VARIANT_FIELDS = [
+  "name", "slug", "year", "price", "fuel_type", "transmission", "drivetrain",
+  "displacement_cc", "cylinders", "horsepower", "torque_nm", "fuel_consumption_combined",
+  "acceleration_0_100", "top_speed_kmh", "battery_capacity_kwh",
+  "length_mm", "width_mm", "height_mm", "wheelbase_mm", "ground_clearance_mm",
+  "trunk_volume_liters", "fuel_tank_liters", "curb_weight_kg", "seating_capacity",
+  "safety_features", "comfort_features", "tech_features", "colors",
+];
+const variantPopulateQs = VARIANT_FIELDS.map((f, i) => `populate[variants][fields][${i}]=${f}`).join("&");
+
 export async function getCarModelBySlug(slug: string): Promise<CarModel | null> {
   const qs = [
     `filters[slug][$eq]=${slug}`,
     "populate[brand][fields][0]=name_vi&populate[brand][fields][1]=name_en&populate[brand][fields][2]=slug&populate[brand][fields][3]=flag_emoji&populate[brand][fields][4]=country_of_origin",
     "populate[gallery][fields][0]=url",
-    "populate[variants]=*",
+    variantPopulateQs,
   ].join("&");
   try {
     const res = await fetchStrapi<StrapiListResponse<StrapiCarModel & {

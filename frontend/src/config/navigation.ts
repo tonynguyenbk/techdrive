@@ -6,6 +6,7 @@ export const mainNav = [
   { key: "compare", href: "/so-sanh" as const },
   { key: "advice", href: "/tu-van" as const },
   { key: "video", href: "/video" as const },
+  { key: "dealers", href: "/dai-ly" as const },
 ] as const;
 
 export const footerNav = {

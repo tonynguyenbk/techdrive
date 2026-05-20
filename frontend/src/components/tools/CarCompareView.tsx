@@ -7,6 +7,7 @@ import { Link } from "@/i18n/navigation";
 import { Plus, X, ChevronDown, ChevronUp, Check, Minus } from "lucide-react";
 import { formatPrice } from "@/lib/utils/format";
 import type { CarModel } from "@/types/car";
+import { DimensionComparison } from "./DimensionComparison";
 
 // ── Label maps ─────────────────────────────────────────────────────────────────
 
@@ -287,22 +288,24 @@ function FeatureGroup({
         {open ? <ChevronUp size={16} className="text-text-muted" /> : <ChevronDown size={16} className="text-text-muted" />}
       </button>
       {open && (
-        <div>
-          {rows.map((feat, i) => {
-            const has = cars.map((c) => (v1(c)?.features[featureKey] ?? []).includes(feat));
-            return (
-              <div key={feat} className={`flex border-t border-surface-border ${i % 2 === 0 ? "" : "bg-surface-elevated/30"}`}>
-                <div className="w-[180px] md:w-[200px] flex-shrink-0 px-4 py-2.5 text-xs text-text-secondary">{feat}</div>
-                {cars.map((car, ci) => (
-                  <div key={car.id} className="flex-1 flex items-center justify-center py-2.5 border-l border-surface-border">
-                    {has[ci]
-                      ? <Check size={16} className="text-green-500" />
-                      : <Minus size={14} className="text-text-muted opacity-30" />}
-                  </div>
-                ))}
-              </div>
-            );
-          })}
+        <div className="overflow-x-auto">
+          <div className="min-w-[420px]">
+            {rows.map((feat, i) => {
+              const has = cars.map((c) => (v1(c)?.features[featureKey] ?? []).includes(feat));
+              return (
+                <div key={feat} className={`flex border-t border-surface-border ${i % 2 === 0 ? "" : "bg-surface-elevated/30"}`}>
+                  <div className="w-[160px] flex-shrink-0 px-4 py-2.5 text-xs text-text-secondary">{feat}</div>
+                  {cars.map((car, ci) => (
+                    <div key={car.id} className="flex-1 min-w-[100px] flex items-center justify-center py-2.5 border-l border-surface-border">
+                      {has[ci]
+                        ? <Check size={16} className="text-green-500" />
+                        : <Minus size={14} className="text-text-muted opacity-30" />}
+                    </div>
+                  ))}
+                </div>
+              );
+            })}
+          </div>
         </div>
       )}
     </div>
@@ -337,36 +340,38 @@ function SpecGroupBlock({
         {open ? <ChevronUp size={16} className="text-text-muted" /> : <ChevronDown size={16} className="text-text-muted" />}
       </button>
       {open && (
-        <div>
-          {visibleRows.map((row, i) => {
-            const winnerIdx = getWinnerIndex(row, cars);
-            return (
-              <div key={row.key} className={`flex border-t border-surface-border ${i % 2 === 0 ? "" : "bg-surface-elevated/30"}`}>
-                <div className="w-[180px] md:w-[200px] flex-shrink-0 px-4 py-2.5 text-xs text-text-secondary leading-snug">
-                  {lang === "vi" ? row.labelVi : row.labelEn}
+        <div className="overflow-x-auto">
+          <div className="min-w-[420px]">
+            {visibleRows.map((row, i) => {
+              const winnerIdx = getWinnerIndex(row, cars);
+              return (
+                <div key={row.key} className={`flex border-t border-surface-border ${i % 2 === 0 ? "" : "bg-surface-elevated/30"}`}>
+                  <div className="w-[160px] flex-shrink-0 px-4 py-2.5 text-xs text-text-secondary leading-snug">
+                    {lang === "vi" ? row.labelVi : row.labelEn}
+                  </div>
+                  {cars.map((car, ci) => {
+                    const val = row.getValue(car, lang);
+                    const isWinner = winnerIdx === ci;
+                    return (
+                      <div
+                        key={car.id}
+                        className={`flex-1 min-w-[100px] flex items-center justify-center px-2 py-2.5 border-l border-surface-border text-sm font-semibold text-center ${
+                          isWinner ? "text-green-500 bg-green-500/5" : "text-text-primary"
+                        }`}
+                      >
+                        <span>{val}</span>
+                        {isWinner && row.betterWhen && (
+                          <span className="ml-1 text-[10px] font-bold text-green-500">
+                            {row.betterWhen === "higher" ? "▲" : "▼"}
+                          </span>
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
-                {cars.map((car, ci) => {
-                  const val = row.getValue(car, lang);
-                  const isWinner = winnerIdx === ci;
-                  return (
-                    <div
-                      key={car.id}
-                      className={`flex-1 flex items-center justify-center px-2 py-2.5 border-l border-surface-border text-sm font-semibold text-center ${
-                        isWinner ? "text-green-500 bg-green-500/5" : "text-text-primary"
-                      }`}
-                    >
-                      <span>{val}</span>
-                      {isWinner && row.betterWhen && (
-                        <span className="ml-1 text-[10px] font-bold text-green-500">
-                          {row.betterWhen === "higher" ? "▲" : "▼"}
-                        </span>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       )}
     </div>
@@ -433,13 +438,17 @@ export function CarCompareView({
 
   // ── Car slots header ──
 
-  const colClass = selectedCars.length === 2 ? "grid-cols-2" : "grid-cols-3";
+  const totalSlots = selectedCars.length + (selectedCars.length < MAX_CARS ? 1 : 0);
+  const colClass = selectedCars.length === 2
+    ? "grid-cols-2"
+    : "grid-cols-3";
 
   return (
     <div className="space-y-4">
 
-      {/* Car slots */}
-      <div className={`grid ${colClass} gap-3`}>
+      {/* Car slots — horizontal scroll on mobile when 3 slots */}
+      <div className={totalSlots >= 3 ? "overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0 pb-1" : ""}>
+        <div className={`grid ${colClass} gap-3 ${totalSlots >= 3 ? "min-w-[480px] sm:min-w-0" : ""}`}>
         {selectedCars.map((car) => (
           <div key={car.slug} className="relative rounded-xl border border-surface-border bg-surface-card overflow-hidden">
             {/* Remove button */}
@@ -484,6 +493,7 @@ export function CarCompareView({
         {selectedCars.length < MAX_CARS && (
           <CarPicker allModels={allModels} selectedSlugs={selectedSlugs} onSelect={addCar} lang={lang} />
         )}
+        </div>
       </div>
 
       {/* Controls */}
@@ -509,6 +519,11 @@ export function CarCompareView({
             {vi ? "Chỉ hiện khác biệt" : "Show differences only"}
           </button>
         </div>
+      )}
+
+      {/* Dimension comparison */}
+      {selectedCars.length >= 2 && (
+        <DimensionComparison cars={selectedCars} lang={lang} />
       )}
 
       {/* Spec table */}

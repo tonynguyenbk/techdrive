@@ -22,7 +22,11 @@ export const routing = defineRouting({
     "/bang-gia": { vi: "/bang-gia", en: "/prices" },
     "/tim-kiem": { vi: "/tim-kiem", en: "/search" },
     "/tu-van": { vi: "/tu-van", en: "/advice" },
+    "/tu-van/chon-xe": { vi: "/tu-van/chon-xe", en: "/advice/car-finder" },
+    "/tu-van/tinh-lan-banh": { vi: "/tu-van/tinh-lan-banh", en: "/advice/on-road-cost" },
+    "/tu-van/tinh-tra-gop": { vi: "/tu-van/tinh-tra-gop", en: "/advice/loan-calculator" },
     "/video": "/video",
+    "/dai-ly": { vi: "/dai-ly", en: "/dealers" },
     "/giai-thuong": { vi: "/giai-thuong", en: "/awards" },
   },
 });

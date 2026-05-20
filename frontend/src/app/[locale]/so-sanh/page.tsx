@@ -5,6 +5,8 @@ import { ChevronRight } from "lucide-react";
 import { getCarModels, getCarModelsBySlug } from "@/lib/api/cars";
 import { CarCompareView } from "@/components/tools/CarCompareView";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "So sánh xe",
   description:
