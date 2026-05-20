@@ -5,6 +5,7 @@ import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { formatDate } from "@/lib/utils/format";
 import { getArticleBySlug, getMostViewed, getRelatedArticles } from "@/lib/api/articles";
+import { getArticleImage } from "@/lib/utils/article-images";
 import { ArticleCard } from "@/components/articles/ArticleCard";
 import { MostViewedSidebar } from "@/components/articles/MostViewedSidebar";
 import { ArticleBadge } from "@/components/articles/ArticleBadge";
@@ -82,7 +83,7 @@ export default async function ArticleDetailPage({ params }: { params: Promise<Pa
             {/* Hero image */}
             <div className="relative h-[400px] rounded-xl overflow-hidden mb-6">
               <Image
-                src={article.featured_image || `https://picsum.photos/seed/${encodeURIComponent(article.slug_vi)}/1200/675`}
+                src={article.featured_image || getArticleImage(article.slug_vi) || `https://picsum.photos/seed/${encodeURIComponent(article.slug_vi)}/1200/675`}
                 alt={title}
                 fill
                 priority

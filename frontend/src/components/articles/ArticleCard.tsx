@@ -3,6 +3,7 @@ import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils/cn";
 import { formatDate } from "@/lib/utils/format";
 import type { ArticleCard as ArticleCardType } from "@/types/article";
+import { getArticleImage } from "@/lib/utils/article-images";
 import { ArticleBadge } from "./ArticleBadge";
 import { ScoreBadge } from "./ScoreBadge";
 
@@ -13,17 +14,13 @@ type Props = {
   className?: string;
 };
 
-function getFallbackImage(seed: string, width = 800, height = 450) {
-  return `https://picsum.photos/seed/${encodeURIComponent(seed)}/${width}/${height}`;
-}
-
 export function ArticleCard({ article, locale = "vi", variant = "default", className }: Props) {
   const lang = locale === "en" ? "en" : "vi";
   const title = lang === "vi" ? article.title_vi : article.title_en;
   const slug = lang === "vi" ? article.slug_vi : article.slug_en;
   const href = article.category === "review" ? `/danh-gia/${slug}` : `/tin-tuc/${slug}`;
   const imgHeight = variant === "tall" ? "h-56" : "h-44";
-  const imageSrc = article.featured_image || getFallbackImage(article.slug_vi);
+  const imageSrc = article.featured_image || getArticleImage(article.slug_vi) || `https://picsum.photos/seed/${encodeURIComponent(article.slug_vi)}/800/450`;
 
   return (
     <Link href={href as "/"} className={cn("group block", className)}>
