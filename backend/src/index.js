@@ -18,7 +18,7 @@ module.exports = {
   register({ strapi }) {},
 
   async bootstrap({ strapi }) {
-    if (process.env.NODE_ENV !== 'development') return;
+    // Seed runs in all environments — safe because it checks for existing data first
 
     strapi.log.info('🌱 Checking seed data...');
     let added = 0;
