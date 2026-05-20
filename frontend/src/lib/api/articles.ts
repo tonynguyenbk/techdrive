@@ -29,6 +29,7 @@ interface StrapiArticle {
   excerpt_en?: string;
   content_vi?: string;
   content_en?: string;
+  cover_url?: string | null;
   featured_image?: StrapiMedia | null;
   gallery?: StrapiMedia[] | null;
   category: "news" | "review" | "comparison" | "advice" | "video";
@@ -84,7 +85,7 @@ function toArticleCard(raw: StrapiArticle): ArticleCard {
     slug_en: raw.slug_en ?? raw.slug_vi,
     excerpt_vi: raw.excerpt_vi ?? "",
     excerpt_en: raw.excerpt_en ?? "",
-    featured_image: mediaUrl(raw.featured_image),
+    featured_image: raw.cover_url || mediaUrl(raw.featured_image),
     category: raw.category,
     author: raw.author ? toAuthor(raw.author) : fallbackAuthor,
     score: raw.score ?? null,

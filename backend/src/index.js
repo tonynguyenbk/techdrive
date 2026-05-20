@@ -97,6 +97,14 @@ module.exports = {
         });
         strapi.log.info(`  ~ updated content: ${articleData.title_vi.substring(0, 60)}`);
         added++;
+      } else if (!existing.cover_url && articleData.cover_url) {
+        // Article exists but is missing cover_url — patch it
+        await strapi.db.query('api::article.article').update({
+          where: { id: existing.id },
+          data: { cover_url: articleData.cover_url },
+        });
+        strapi.log.info(`  ~ updated cover_url: ${articleData.title_vi.substring(0, 60)}`);
+        added++;
       }
     }
 

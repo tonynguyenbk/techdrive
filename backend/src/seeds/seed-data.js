@@ -490,6 +490,7 @@ const seedArticles = [
     reading_time_minutes: 12,
     view_count: 42800,
     tags: ['VinFast', 'VF9', 'SUV điện', 'xe điện'],
+    cover_url: 'https://images.unsplash.com/photo-1617788138017-80ad40651399?w=800&h=450&fit=crop&q=80',
     publishedAt: new Date('2026-05-10T08:00:00Z'),
   },
   {
@@ -533,6 +534,7 @@ const seedArticles = [
     reading_time_minutes: 10,
     view_count: 38500,
     tags: ['Mazda', 'CX-5', 'SUV', 'đánh giá xe'],
+    cover_url: 'https://images.unsplash.com/photo-1584345604476-8ec5f452d1f2?w=800&h=450&fit=crop&q=80',
     publishedAt: new Date('2026-04-15T08:00:00Z'),
   },
   {
@@ -570,6 +572,7 @@ const seedArticles = [
     reading_time_minutes: 11,
     view_count: 35200,
     tags: ['Ford', 'Ranger', 'bán tải', 'pickup', 'off-road'],
+    cover_url: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=450&fit=crop&q=80',
     publishedAt: new Date('2026-04-01T08:00:00Z'),
   },
   {
@@ -607,6 +610,7 @@ const seedArticles = [
     reading_time_minutes: 9,
     view_count: 29400,
     tags: ['Kia', 'Carnival', 'MPV', 'xe gia đình'],
+    cover_url: 'https://images.unsplash.com/photo-1609521263047-f8f205293f24?w=800&h=450&fit=crop&q=80',
     publishedAt: new Date('2026-03-20T08:00:00Z'),
   },
   {
@@ -644,6 +648,7 @@ const seedArticles = [
     reading_time_minutes: 8,
     view_count: 22100,
     tags: ['Toyota', 'Fortuner', 'SUV', 'off-road', 'lái thử'],
+    cover_url: 'https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=800&h=450&fit=crop&q=80',
     publishedAt: new Date('2026-03-05T08:00:00Z'),
   },
   {
@@ -681,6 +686,7 @@ const seedArticles = [
     reading_time_minutes: 10,
     view_count: 31700,
     tags: ['Hyundai', 'Santa Fe', 'SUV', '7 chỗ'],
+    cover_url: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=800&h=450&fit=crop&q=80',
     publishedAt: new Date('2026-02-20T08:00:00Z'),
   },
   {
@@ -718,6 +724,7 @@ const seedArticles = [
     reading_time_minutes: 9,
     view_count: 26800,
     tags: ['Honda', 'CR-V', 'Hybrid', 'SUV', 'tiết kiệm nhiên liệu'],
+    cover_url: 'https://images.unsplash.com/photo-1551830820-429a626e9c50?w=800&h=450&fit=crop&q=80',
     publishedAt: new Date('2026-02-01T08:00:00Z'),
   },
 
@@ -744,6 +751,7 @@ const seedArticles = [
     reading_time_minutes: 4,
     view_count: 67400,
     tags: ['VinFast', 'VF3', 'xe điện', 'ra mắt'],
+    cover_url: 'https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=800&h=450&fit=crop&q=80',
     publishedAt: new Date('2026-05-05T10:00:00Z'),
   },
   {
@@ -787,6 +795,7 @@ const seedArticles = [
     reading_time_minutes: 3,
     view_count: 54200,
     tags: ['doanh số', 'thị trường xe', 'VAMA', 'bán chạy'],
+    cover_url: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800&h=450&fit=crop&q=80',
     publishedAt: new Date('2026-05-08T09:00:00Z'),
   },
   {
@@ -815,6 +824,7 @@ const seedArticles = [
     reading_time_minutes: 4,
     view_count: 41300,
     tags: ['Toyota', 'Corolla Cross', 'Hybrid', 'ra mắt 2025'],
+    cover_url: 'https://images.unsplash.com/photo-1606016159991-dfe4f2746ad5?w=800&h=450&fit=crop&q=80',
     publishedAt: new Date('2026-04-20T09:00:00Z'),
   },
   {
@@ -839,6 +849,7 @@ const seedArticles = [
     reading_time_minutes: 3,
     view_count: 28900,
     tags: ['Hyundai', 'Creta', 'doanh số', 'B-SUV'],
+    cover_url: 'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=800&h=450&fit=crop&q=80',
     publishedAt: new Date('2026-03-12T09:00:00Z'),
   },
   {
@@ -863,6 +874,7 @@ const seedArticles = [
     reading_time_minutes: 4,
     view_count: 19800,
     tags: ['thuế xe', 'ASEAN', 'chính sách', 'giá xe'],
+    cover_url: 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=800&h=450&fit=crop&q=80',
     publishedAt: new Date('2026-01-15T09:00:00Z'),
   },
 
@@ -901,6 +913,7 @@ const seedArticles = [
     reading_time_minutes: 12,
     view_count: 47600,
     tags: ['so sánh xe', 'CX-5', 'Tucson', 'CR-V', 'SUV tầm trung'],
+    cover_url: 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800&h=450&fit=crop&q=80',
     publishedAt: new Date('2026-04-25T08:00:00Z'),
   },
   {
@@ -937,6 +950,7 @@ const seedArticles = [
     reading_time_minutes: 11,
     view_count: 39200,
     tags: ['so sánh xe', 'Veloz Cross', 'Xpander', 'Carnival', 'MPV gia đình'],
+    cover_url: 'https://images.unsplash.com/photo-1464219789935-c2d9d9aba644?w=800&h=450&fit=crop&q=80',
     publishedAt: new Date('2026-03-28T08:00:00Z'),
   },
 ];

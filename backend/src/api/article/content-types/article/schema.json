@@ -52,6 +52,10 @@
         "preset": "defaultHtml"
       }
     },
+    "cover_url": {
+      "type": "string",
+      "maxLength": 500
+    },
     "featured_image": {
       "type": "media",
       "multiple": false,
