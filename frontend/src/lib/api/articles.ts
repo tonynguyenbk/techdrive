@@ -1,6 +1,7 @@
 import type { Article, ArticleCard } from "@/types/article";
 import type { Author } from "@/types/author";
 import { fetchStrapi, mediaUrl, type StrapiListResponse, type StrapiSingleResponse, type StrapiMedia } from "./strapi";
+import { getArticleImage } from "@/lib/utils/article-images";
 
 // ── Strapi raw shapes ────────────────────────────────────────────────────────
 
@@ -85,7 +86,7 @@ function toArticleCard(raw: StrapiArticle): ArticleCard {
     slug_en: raw.slug_en ?? raw.slug_vi,
     excerpt_vi: raw.excerpt_vi ?? "",
     excerpt_en: raw.excerpt_en ?? "",
-    featured_image: raw.cover_url || mediaUrl(raw.featured_image),
+    featured_image: getArticleImage(raw.slug_vi) || raw.cover_url || mediaUrl(raw.featured_image),
     category: raw.category,
     author: raw.author ? toAuthor(raw.author) : fallbackAuthor,
     score: raw.score ?? null,
