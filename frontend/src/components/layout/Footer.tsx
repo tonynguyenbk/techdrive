@@ -33,7 +33,7 @@ export async function Footer() {
               </p>
               <div className="flex items-center flex-wrap gap-2">
                 <a
-                  href="https://facebook.com/techdrivevn"
+                  href="https://www.facebook.com/techdriveauto"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="TechDrive trên Facebook"
@@ -44,7 +44,7 @@ export async function Footer() {
                   </svg>
                 </a>
                 <a
-                  href="https://youtube.com/@techdrivevn"
+                  href="https://www.youtube.com/@TechDriveAuto"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="TechDrive trên YouTube"
@@ -66,7 +66,7 @@ export async function Footer() {
                   </svg>
                 </a>
                 <a
-                  href="https://x.com/techdrivevn"
+                  href="https://x.com/techdriveauto"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="TechDrive trên X"
@@ -88,7 +88,7 @@ export async function Footer() {
                   </svg>
                 </a>
                 <a
-                  href="https://tiktok.com/@techdrivevn"
+                  href="https://www.tiktok.com/@techdriveauto"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="TechDrive trên TikTok"
