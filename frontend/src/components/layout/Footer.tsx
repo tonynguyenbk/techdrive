@@ -10,7 +10,7 @@ export async function Footer() {
 
   return (
     <footer className="border-t border-surface-border mt-auto"
-      style={{ background: "linear-gradient(to right, #0A192F 50%, #001A2C 50%)" }}
+      style={{ background: "#071222" }}
     >
       <div className="max-w-[1200px] mx-auto px-5 py-10">
         <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr] gap-8 md:gap-10">
