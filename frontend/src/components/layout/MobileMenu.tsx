@@ -44,14 +44,15 @@ export function MobileMenu({ navItems }: { navItems: NavItem[] }) {
       {/* Drawer */}
       <div
         className={cn(
-          "md:hidden fixed top-0 right-0 bottom-0 z-50 w-72 bg-surface-elevated border-l border-surface-border transition-transform duration-300 flex flex-col",
+          "md:hidden fixed top-0 right-0 bottom-0 z-50 w-72 border-l border-surface-border transition-transform duration-300 flex flex-col",
           open ? "translate-x-0" : "translate-x-full"
         )}
+        style={{ background: "#111111" }}
       >
         <div className="flex items-center justify-between px-5 h-14 border-b border-surface-border">
           <span className="text-lg font-black">
-            <span className="text-text-primary">Tech</span>
-            <span className="text-primary">Drive</span>
+            <span className="text-primary">Tech</span>
+            <span className="text-white">Drive</span>
           </span>
           <button
             onClick={() => setOpen(false)}
