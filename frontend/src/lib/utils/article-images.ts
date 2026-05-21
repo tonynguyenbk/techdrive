@@ -1,4 +1,5 @@
 const ARTICLE_IMAGES: Record<string, string> = {
+  'lamborghini-urus-se-tettonero-capsule': 'https://res.cloudinary.com/dhiykqhrp/image/upload/v1779010978/668202_d99f06cfb6.jpg',
   'vinfast-vf9-2026-danh-gia':               'https://images.unsplash.com/photo-1617788138017-80ad40651399?w=800&h=450&fit=crop&q=80',
   'mazda-cx5-2024-danh-gia':                 'https://images.unsplash.com/photo-1584345604476-8ec5f452d1f2?w=800&h=450&fit=crop&q=80',
   'ford-ranger-2024-danh-gia':               'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=450&fit=crop&q=80',

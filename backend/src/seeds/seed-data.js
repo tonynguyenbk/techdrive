@@ -953,6 +953,48 @@ const seedArticles = [
     cover_url: 'https://images.unsplash.com/photo-1464219789935-c2d9d9aba644?w=800&h=450&fit=crop&q=80',
     publishedAt: new Date('2026-03-28T08:00:00Z'),
   },
+
+  // ── FEATURED ─────────────────────────────────────────────────────────────
+  {
+    authorName: 'Lê Hoàng Nam',
+    title_vi: 'Lamborghini Urus SE Tettonero Capsule: Siêu SUV lai điện khoác áo tối thượng',
+    slug_vi: 'lamborghini-urus-se-tettonero-capsule',
+    excerpt_vi: 'Tettonero Capsule là gói tùy biến Ad Personam mới nhất của Lamborghini dành cho Urus SE PHEV — 800 mã lực, mái đen tương phản và nội thất Alcantara cao cấp.',
+    content_vi: `<p>Lamborghini vừa ra mắt <strong>Urus SE Tettonero Capsule</strong> — một gói tùy biến Ad Personam đặc biệt dành riêng cho siêu SUV hybrid mạnh nhất trong lịch sử của hãng. "Tettonero" trong tiếng Ý có nghĩa là <i>mái đen</i>, và đó chính xác là điểm nhận diện nổi bật nhất của gói này: phần mái sơn đen tương phản tạo nên sự đối lập ấn tượng với màu thân xe.</p>
+
+<h2>Thiết kế: Đen tuyệt đối trên nền màu sắc rực rỡ</h2>
+<p>Tettonero Capsule được xây dựng trên nền tảng Urus SE với triết lý thiết kế hai tông màu táo bạo. Phần mái, cột A, cột B và cánh gương được xử lý bằng sơn đen bóng hoặc carbon, tạo hiệu ứng "floating roof" — mái xe như đang lơ lửng trên thân xe.</p>
+<p>Phần thân có thể kết hợp với nhiều màu sắc đặc trưng của Lamborghini như Verde Mantis (xanh lá), Arancio Borealis (cam), hay Blu Aegir (xanh dương). Bộ mâm 23 inch với thiết kế đa chấu sơn đen tạo nên tổng thể nhất quán, hung hăng từ đầu đến cuối.</p>
+<p>Nội thất được nâng cấp với da Alcantara và da thuộc cao cấp, đường chỉ tương phản, ốp carbon sợi khô (forged carbon) và logo Tettonero thêu trên tựa đầu.</p>
+
+<h2>Sức mạnh: 800 mã lực từ hybrid PHEV</h2>
+<p>Tettonero Capsule đặt trên nền tảng cơ học của <strong>Urus SE</strong> — phiên bản plug-in hybrid (PHEV) của Urus, được Lamborghini công bố là siêu SUV mạnh nhất từ trước đến nay.</p>
+<ul>
+<li><strong>Động cơ:</strong> V8 4.0L twin-turbo + motor điện tích hợp</li>
+<li><strong>Công suất tổng:</strong> 800 mã lực (620 kW)</li>
+<li><strong>Mô-men xoắn:</strong> 950 Nm</li>
+<li><strong>0–100 km/h:</strong> 3,4 giây</li>
+<li><strong>Tốc độ tối đa:</strong> 312 km/h</li>
+<li><strong>Phạm vi thuần điện:</strong> khoảng 60 km (WLTP)</li>
+</ul>
+<p>So với Urus S thông thường (666 mã lực), Urus SE bổ sung thêm gần 135 mã lực nhờ hệ thống điện tích hợp — đây là bước chuyển đổi quan trọng của Lamborghini trong hành trình điện khí hóa dòng SUV của mình.</p>
+
+<h2>Vận hành: Dữ dội hay lịch thiệp — do bạn chọn</h2>
+<p>Urus SE có 4 chế độ lái: <strong>EV</strong> (thuần điện, yên tĩnh), <strong>Hybrid</strong> (cân bằng hiệu suất và tiêu hao), <strong>Performance</strong> (tối ưu sức mạnh) và <strong>Recharge</strong> (sạc pin trong khi lái). Hệ dẫn động AWD với khả năng phân phối mô-men xoắn chủ động giúp xe bám đường xuất sắc ngay cả khi tăng tốc toàn lực.</p>
+<p>Hệ thống phanh carbon-ceramic (CCBM) tùy chọn với kẹp phanh 10 piston ở trước đảm bảo khả năng giảm tốc xứng tầm với công suất.</p>
+
+<h2>Ai dành cho chiếc xe này?</h2>
+<p>Lamborghini Urus SE Tettonero Capsule không phải xe để đi chợ hay đưa con đi học — dù về mặt kỹ thuật nó hoàn toàn có thể làm điều đó. Đây là tuyên ngôn của chủ nhân: <i>tôi không cần phải chọn giữa sự sang trọng, hiệu suất và phong cách</i>.</p>
+<p>Với mức giá khởi điểm cho Urus SE tại các thị trường châu Á dao động từ <strong>15 tỷ đến 20 tỷ đồng</strong> tùy cấu hình và thuế nhập khẩu, Tettonero Capsule là phiên bản đáng để đặt hàng nếu bạn muốn có chiếc Urus SE khác biệt hoàn toàn so với phần còn lại.</p>
+<p><i>Lamborghini hiện phân phối chính hãng tại Việt Nam thông qua nhà phân phối chính thức tại Hà Nội và TP.HCM.</i></p>`,
+    category: 'news',
+    is_featured: true,
+    reading_time_minutes: 5,
+    view_count: 0,
+    tags: ['Lamborghini', 'Urus SE', 'Hybrid', 'SUV', 'Siêu xe', 'Ad Personam', 'PHEV'],
+    cover_url: 'https://res.cloudinary.com/dhiykqhrp/image/upload/v1779010978/668202_d99f06cfb6.jpg',
+    publishedAt: new Date('2026-05-17T09:51:54.401Z'),
+  },
 ];
 
 // ── Car Variants ──────────────────────────────────────────────────────────────
