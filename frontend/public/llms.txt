@@ -1,0 +1,40 @@
+# TechDrive — Báo điện tử ô tô hàng đầu Việt Nam
+
+> TechDrive là website tin tức và đánh giá xe hơi song ngữ Việt–Anh, cung cấp thông tin chuyên sâu về thị trường ô tô Việt Nam.
+
+## Về TechDrive
+
+- **Tên:** TechDrive (techdrive.vn)
+- **Ngôn ngữ:** Tiếng Việt (chính), Tiếng Anh (phụ)
+- **Lĩnh vực:** Tin tức ô tô, đánh giá xe, so sánh xe, bảng giá xe Việt Nam
+- **Đối tượng:** Người mua xe, người dùng xe, giới automotive tại Việt Nam
+
+## Nội dung chính
+
+- Tin tức xe hơi mới nhất tại Việt Nam và quốc tế
+- Đánh giá chi tiết (lái thử, điểm số 1–10) cho các mẫu xe phổ biến tại VN
+- So sánh xe cùng phân khúc (SUV, MPV, sedan, bán tải, xe điện)
+- Bảng giá xe cập nhật theo tháng
+- Tư vấn mua xe theo nhu cầu và ngân sách
+
+## Phân khúc xe tập trung
+
+SUV tầm trung (Mazda CX-5, Hyundai Tucson, Honda CR-V), xe điện VinFast (VF3, VF6, VF8, VF9), xe Nhật phổ thông (Toyota, Honda, Mazda), xe Hàn (Hyundai, Kia), bán tải (Ford Ranger), MPV gia đình (Kia Carnival, Toyota Veloz Cross)
+
+## URL quan trọng
+
+- Trang chủ: https://techdrive.vn
+- Tin tức: https://techdrive.vn/tin-tuc
+- Đánh giá: https://techdrive.vn/danh-gia
+- So sánh: https://techdrive.vn/so-sanh
+- Tìm xe: https://techdrive.vn/tim-xe
+- Bảng giá: https://techdrive.vn/bang-gia
+- Sitemap: https://techdrive.vn/sitemap.xml
+
+## Thông tin tổ chức
+
+- Website: https://techdrive.vn
+- Facebook: https://www.facebook.com/techdriveauto
+- YouTube: https://www.youtube.com/@TechDriveAuto
+- X/Twitter: https://x.com/techdriveauto
+- TikTok: https://www.tiktok.com/@techdriveauto

@@ -60,8 +60,32 @@ export default async function ArticleDetailPage({ params }: { params: Promise<Pa
 
   const relatedArticles = await getRelatedArticles(article.category, article.id, 3);
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": article.category === "review" ? "Review" : "NewsArticle",
+    "headline": title,
+    "description": excerpt,
+    "image": article.featured_image ? [article.featured_image] : [],
+    "datePublished": article.published_at,
+    "dateModified": article.updated_at,
+    "author": {
+      "@type": "Person",
+      "name": article.author?.name ?? "TechDrive",
+      "jobTitle": article.author?.role === "editor" ? "Tổng biên tập" : "Nhà báo",
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "TechDrive",
+      "url": "https://techdrive.vn",
+      "logo": { "@type": "ImageObject", "url": "https://techdrive.vn/logo.png" },
+    },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": `https://techdrive.vn/danh-gia/${article.slug_vi}` },
+    ...(article.score ? { "reviewRating": { "@type": "Rating", "ratingValue": article.score, "bestRating": 10 } } : {}),
+  };
+
   return (
     <main className="flex-1">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className="max-w-[1200px] mx-auto px-4 md:px-5 py-6">
 
         {/* Breadcrumb */}
