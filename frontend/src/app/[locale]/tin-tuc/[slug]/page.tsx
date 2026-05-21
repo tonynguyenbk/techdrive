@@ -9,6 +9,7 @@ import { getArticleImage } from "@/lib/utils/article-images";
 import { ArticleCard } from "@/components/articles/ArticleCard";
 import { MostViewedSidebar } from "@/components/articles/MostViewedSidebar";
 import { ArticleBadge } from "@/components/articles/ArticleBadge";
+import { GalleryGrid } from "@/components/ui/Lightbox";
 import { Eye, Clock, ChevronRight } from "lucide-react";
 import { formatNumber } from "@/lib/utils/format";
 
@@ -169,18 +170,11 @@ export default async function ArticleDetailPage({ params }: { params: Promise<Pa
 
             {/* Gallery */}
             {article.gallery && article.gallery.filter(Boolean).length > 0 && (
-              <div className="mt-8">
-                <p className="text-sm font-bold text-text-primary mb-3">
-                  {lang === "vi" ? "📷 Ảnh trong bài" : "📷 Photo Gallery"}
-                </p>
-                <div className="grid grid-cols-2 gap-2">
-                  {article.gallery.filter(Boolean).map((img, i) => (
-                    <div key={i} className="relative aspect-video rounded-lg overflow-hidden">
-                      <Image src={img!} alt={`${title} - ảnh ${i + 1}`} fill className="object-cover hover:scale-105 transition-transform duration-300" sizes="(max-width: 768px) 50vw, 400px" />
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <GalleryGrid
+                images={article.gallery.filter(Boolean) as string[]}
+                title={title ?? ""}
+                label={lang === "vi" ? "Ảnh trong bài" : "Photo Gallery"}
+              />
             )}
 
             {/* Tags */}
