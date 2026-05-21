@@ -19,7 +19,7 @@ export async function Footer() {
           <div>
             <div className="text-xl font-black tracking-tight mb-3">
               <span className="text-primary">Tech</span>
-              <span className="text-text-primary">Drive</span>
+              <span className="text-white">Drive</span>
             </div>
             <p className="text-sm text-text-muted leading-relaxed max-w-xs">
               Trang tin tức & đánh giá ô tô hàng đầu Việt Nam.
