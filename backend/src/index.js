@@ -24,6 +24,23 @@ module.exports = {
     let added = 0;
 
     // ── Authors ────────────────────────────────────────────────────────────
+    const authorRenames = {
+      'nguyen-minh-duc': 'Trường Nguyễn',
+      'tran-quoc-bao':   'Thu Hồng',
+      'le-hoang-nam':    'Hải Minh',
+    };
+    for (const [oldSlug, newName] of Object.entries(authorRenames)) {
+      const old = await strapi.db.query('api::author.author').findOne({ where: { slug: oldSlug } });
+      if (old) {
+        await strapi.db.query('api::author.author').update({
+          where: { id: old.id },
+          data: { name: newName, slug: toSlug(newName) },
+        });
+        strapi.log.info(`  ~ renamed author: ${oldSlug} → ${newName}`);
+        added++;
+      }
+    }
+
     const allAuthors = {};
     for (const a of seedAuthors) {
       const slug = toSlug(a.name);

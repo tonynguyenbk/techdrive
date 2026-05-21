@@ -4,19 +4,19 @@
 
 const seedAuthors = [
   {
-    name: 'Nguyễn Minh Đức',
+    name: 'Trường Nguyễn',
     bio_vi: 'Biên tập viên cao cấp với 8 năm kinh nghiệm lái thử và đánh giá xe tại Việt Nam và quốc tế. Chuyên sâu về xe điện và công nghệ ô tô mới.',
     bio_en: 'Senior editor with 8 years of car testing and reviewing experience in Vietnam and internationally. Specialises in EVs and new automotive technology.',
     role: 'journalist',
   },
   {
-    name: 'Trần Quốc Bảo',
+    name: 'Thu Hồng',
     bio_vi: 'Nhà báo xe hơi chuyên về thị trường xe Nhật và Hàn tại Việt Nam. Đã thực hiện hơn 200 bài lái thử xe.',
     bio_en: 'Automotive journalist specialising in Japanese and Korean cars in Vietnam. Has conducted over 200 car test drives.',
     role: 'journalist',
   },
   {
-    name: 'Lê Hoàng Nam',
+    name: 'Hải Minh',
     bio_vi: 'Tổng biên tập, chuyên gia phân tích thị trường ô tô Việt Nam hơn 10 năm. Cố vấn cho nhiều chương trình mua xe của VTV và VTC.',
     bio_en: 'Editor-in-chief and market analyst with over 10 years in the Vietnamese automotive industry. Advisor to VTV and VTC car-buying programmes.',
     role: 'editor',
@@ -450,7 +450,7 @@ const seedCarModels = [
 const seedArticles = [
   // ── REVIEWS ──────────────────────────────────────────────────────────────
   {
-    authorName: 'Nguyễn Minh Đức',
+    authorName: 'Trường Nguyễn',
     title_vi: 'VinFast VF 9 2026: SUV điện Việt Nam có đủ sức cạnh tranh toàn cầu?',
     title_en: "VinFast VF 9 2026: Can Vietnam's Electric SUV Compete Globally?",
     slug_vi: 'vinfast-vf9-2026-danh-gia',
@@ -494,7 +494,7 @@ const seedArticles = [
     publishedAt: new Date('2026-05-10T08:00:00Z'),
   },
   {
-    authorName: 'Nguyễn Minh Đức',
+    authorName: 'Trường Nguyễn',
     title_vi: 'Mazda CX-5 2024 đánh giá: Vẫn là vua phân khúc SUV tầm trung?',
     title_en: 'Mazda CX-5 2024 Review: Still King of the Mid-Range SUV Segment?',
     slug_vi: 'mazda-cx5-2024-danh-gia',
@@ -538,7 +538,7 @@ const seedArticles = [
     publishedAt: new Date('2026-04-15T08:00:00Z'),
   },
   {
-    authorName: 'Trần Quốc Bảo',
+    authorName: 'Thu Hồng',
     title_vi: 'Ford Ranger 2024 đánh giá toàn diện: Vua bán tải khẳng định vị thế',
     title_en: 'Ford Ranger 2024 Full Review: The Pickup King Asserts Its Dominance',
     slug_vi: 'ford-ranger-2024-danh-gia',
@@ -576,7 +576,7 @@ const seedArticles = [
     publishedAt: new Date('2026-04-01T08:00:00Z'),
   },
   {
-    authorName: 'Lê Hoàng Nam',
+    authorName: 'Hải Minh',
     title_vi: 'Kia Carnival 2024 đánh giá: Limousine gia đình dưới 1.6 tỷ',
     title_en: 'Kia Carnival 2024 Review: Family Limousine Under 1.6 Billion VND',
     slug_vi: 'kia-carnival-2024-danh-gia',
@@ -614,7 +614,7 @@ const seedArticles = [
     publishedAt: new Date('2026-03-20T08:00:00Z'),
   },
   {
-    authorName: 'Trần Quốc Bảo',
+    authorName: 'Thu Hồng',
     title_vi: 'Toyota Fortuner 2024 lái thử: SUV địa hình có giữ được hào quang?',
     title_en: 'Toyota Fortuner 2024 First Drive: Can the Off-Road Icon Keep Its Glory?',
     slug_vi: 'toyota-fortuner-2024-lai-thu',
@@ -652,7 +652,7 @@ const seedArticles = [
     publishedAt: new Date('2026-03-05T08:00:00Z'),
   },
   {
-    authorName: 'Trần Quốc Bảo',
+    authorName: 'Thu Hồng',
     title_vi: 'Hyundai Santa Fe 2024 đánh giá: SUV Hàn Quốc đe dọa ngôi vương',
     title_en: 'Hyundai Santa Fe 2024 Review: Korean SUV Threatens the Crown',
     slug_vi: 'hyundai-santa-fe-2024-danh-gia',
@@ -690,7 +690,7 @@ const seedArticles = [
     publishedAt: new Date('2026-02-20T08:00:00Z'),
   },
   {
-    authorName: 'Nguyễn Minh Đức',
+    authorName: 'Trường Nguyễn',
     title_vi: 'Honda CR-V Hybrid 2023 đánh giá: SUV tiết kiệm nhất phân khúc?',
     title_en: 'Honda CR-V Hybrid 2023 Review: The Most Fuel-Efficient SUV in Its Class?',
     slug_vi: 'honda-crv-hybrid-2023-danh-gia',
@@ -730,7 +730,7 @@ const seedArticles = [
 
   // ── NEWS ─────────────────────────────────────────────────────────────────
   {
-    authorName: 'Lê Hoàng Nam',
+    authorName: 'Hải Minh',
     title_vi: 'VinFast VF 3 chính thức ra mắt: Xe điện phổ thông giá từ 235 triệu đồng',
     title_en: 'VinFast VF 3 Officially Launched: Mass-Market EV Starting at 235 Million VND',
     slug_vi: 'vinfast-vf3-ra-mat-gia-tu-235-trieu',
@@ -755,7 +755,7 @@ const seedArticles = [
     publishedAt: new Date('2026-05-05T10:00:00Z'),
   },
   {
-    authorName: 'Lê Hoàng Nam',
+    authorName: 'Hải Minh',
     title_vi: 'Top 10 xe bán chạy nhất tháng 4/2026: Toyota thống trị, VinFast tăng trưởng mạnh',
     title_en: 'Top 10 Best-Selling Cars April 2026: Toyota Dominates, VinFast Surges',
     slug_vi: 'top-10-xe-ban-chay-thang-4-2026',
@@ -799,7 +799,7 @@ const seedArticles = [
     publishedAt: new Date('2026-05-08T09:00:00Z'),
   },
   {
-    authorName: 'Trần Quốc Bảo',
+    authorName: 'Thu Hồng',
     title_vi: 'Toyota Corolla Cross 2025 facelift chính thức ra mắt: Giá từ 746 triệu',
     title_en: 'Toyota Corolla Cross 2025 Facelift Officially Launched: From 746 Million VND',
     slug_vi: 'toyota-corolla-cross-2025-facelift-ra-mat',
@@ -828,7 +828,7 @@ const seedArticles = [
     publishedAt: new Date('2026-04-20T09:00:00Z'),
   },
   {
-    authorName: 'Trần Quốc Bảo',
+    authorName: 'Thu Hồng',
     title_vi: 'Hyundai Creta 2024 bán được 3.200 xe trong 2 tháng: Kỷ lục mới phân khúc B-SUV',
     title_en: 'Hyundai Creta 2024 Sells 3,200 Units in 2 Months: New B-SUV Segment Record',
     slug_vi: 'hyundai-creta-2024-ky-luc-b-suv',
@@ -853,7 +853,7 @@ const seedArticles = [
     publishedAt: new Date('2026-03-12T09:00:00Z'),
   },
   {
-    authorName: 'Lê Hoàng Nam',
+    authorName: 'Hải Minh',
     title_vi: 'Thuế nhập khẩu ô tô ASEAN tiếp tục 0%: Xe Thái, Indonesia về Việt Nam rẻ hơn',
     title_en: 'ASEAN Car Import Tax Remains at 0%: Thai and Indonesian Cars Cheaper in Vietnam',
     slug_vi: 'thue-nhap-khau-o-to-asean-0-phan-tram-2026',
@@ -880,7 +880,7 @@ const seedArticles = [
 
   // ── COMPARISON ──────────────────────────────────────────────────────────
   {
-    authorName: 'Nguyễn Minh Đức',
+    authorName: 'Trường Nguyễn',
     title_vi: 'So sánh Mazda CX-5 vs Hyundai Tucson vs Honda CR-V: Đâu là SUV tầm trung tốt nhất?',
     title_en: 'Mazda CX-5 vs Hyundai Tucson vs Honda CR-V: Which Mid-Size SUV is Best?',
     slug_vi: 'so-sanh-cx5-tucson-crv-suv-tam-trung',
@@ -917,7 +917,7 @@ const seedArticles = [
     publishedAt: new Date('2026-04-25T08:00:00Z'),
   },
   {
-    authorName: 'Nguyễn Minh Đức',
+    authorName: 'Trường Nguyễn',
     title_vi: 'Toyota Veloz Cross vs Mitsubishi Xpander vs Kia Carnival: MPV gia đình nào đáng mua nhất?',
     title_en: 'Toyota Veloz Cross vs Mitsubishi Xpander vs Kia Carnival: Which Family MPV is Worth Buying?',
     slug_vi: 'so-sanh-veloz-xpander-carnival-mpv-gia-dinh',
@@ -956,7 +956,7 @@ const seedArticles = [
 
   // ── FEATURED ─────────────────────────────────────────────────────────────
   {
-    authorName: 'Lê Hoàng Nam',
+    authorName: 'Hải Minh',
     title_vi: 'Lamborghini Urus SE Tettonero Capsule: Siêu SUV lai điện khoác áo tối thượng',
     slug_vi: 'lamborghini-urus-se-tettonero-capsule',
     excerpt_vi: 'Tettonero Capsule là gói tùy biến Ad Personam mới nhất của Lamborghini dành cho Urus SE PHEV — 800 mã lực, mái đen tương phản và nội thất Alcantara cao cấp.',
