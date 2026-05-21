@@ -490,7 +490,7 @@ const seedArticles = [
     reading_time_minutes: 12,
     view_count: 42800,
     tags: ['VinFast', 'VF9', 'SUV điện', 'xe điện'],
-    cover_url: 'https://images.unsplash.com/photo-1617788138017-80ad40651399?w=800&h=450&fit=crop&q=80',
+    cover_url: 'https://thuongtruong-fileserver.nvcms.net/IMAGES/2024/04/26/20240426194213-12anh-1.jpg',
     publishedAt: new Date('2026-05-10T08:00:00Z'),
   },
   {
