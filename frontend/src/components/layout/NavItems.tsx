@@ -31,13 +31,13 @@ export function NavItems({ items }: { items: NavItem[] }) {
             href={href as "/"}
             onMouseEnter={() => setHovered(href)}
             className="relative px-3 py-1.5 rounded-md text-sm font-medium transition-colors duration-150 select-none"
-            style={{ color: active ? "var(--color-primary, #e5202e)" : hovered === href ? "white" : "rgba(255,255,255,0.55)" }}
+            style={{ color: active ? "var(--color-primary)" : hovered === href ? "var(--color-text-primary)" : "var(--color-text-secondary)" }}
           >
             {showPill && (
               <motion.span
                 layoutId="nav-pill"
                 className="absolute inset-0 rounded-md"
-                style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.08)" }}
+                style={{ background: "var(--color-surface-elevated)", border: "1px solid var(--color-surface-border)" }}
                 transition={{ type: "spring", stiffness: 400, damping: 30 }}
               />
             )}
