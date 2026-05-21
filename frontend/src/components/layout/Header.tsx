@@ -6,6 +6,7 @@ import { LanguageSwitcher } from "./LanguageSwitcher";
 import { MobileMenu } from "./MobileMenu";
 import { ThemeToggle } from "./ThemeToggle";
 import { SearchDialog } from "./SearchDialog";
+import { NavItems } from "./NavItems";
 
 export async function Header() {
   const t = await getTranslations("nav");
@@ -25,17 +26,7 @@ export async function Header() {
         </Link>
 
         {/* Desktop navigation */}
-        <nav className="hidden md:flex items-center gap-1 flex-1">
-          {navItems.map(({ label, href }) => (
-            <Link
-              key={href}
-              href={href as "/"}
-              className="px-3 py-1.5 rounded-md text-sm font-medium text-text-muted hover:text-text-primary hover:bg-surface-card transition-colors"
-            >
-              {label}
-            </Link>
-          ))}
-        </nav>
+        <NavItems items={navItems} />
 
         {/* Right controls */}
         <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
