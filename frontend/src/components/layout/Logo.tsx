@@ -1,7 +1,3 @@
-"use client";
-
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils/cn";
 
 interface LogoProps {
@@ -9,21 +5,21 @@ interface LogoProps {
 }
 
 export function Logo({ className }: LogoProps) {
-  const { resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  // Default to dark logo (site default theme is dark) to avoid flash
-  const src = mounted && resolvedTheme === "light" ? "/logo.png" : "/logo-dark.png";
-
   return (
-    <img
-      src={src}
-      alt="TechDrive"
-      className={cn("w-auto object-contain", className)}
-    />
+    <>
+      {/* Light mode logo — hidden in dark */}
+      <img
+        src="/logo.png"
+        alt="TechDrive"
+        className={cn("w-auto object-contain dark:hidden", className)}
+      />
+      {/* Dark mode logo — hidden in light */}
+      <img
+        src="/logo-dark.png"
+        alt=""
+        aria-hidden="true"
+        className={cn("w-auto object-contain hidden dark:block", className)}
+      />
+    </>
   );
 }
