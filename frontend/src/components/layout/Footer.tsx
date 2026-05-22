@@ -28,7 +28,7 @@ export async function Footer() {
 
             {/* Social links */}
             <div className="mt-5">
-              <p className="text-[10px] font-bold text-white/50 uppercase tracking-widest mb-3">
+              <p className="text-[10px] font-bold text-white/70 uppercase tracking-widest mb-3">
                 Theo dõi chúng tôi
               </p>
               <div className="flex items-center flex-wrap gap-2">
@@ -123,7 +123,7 @@ export async function Footer() {
               </div>
             </div>
 
-            <p className="text-xs text-white/50 mt-5">
+            <p className="text-xs text-white/60 mt-5">
               © {currentYear} TechDrive. All rights reserved.
             </p>
           </div>
@@ -225,7 +225,7 @@ export async function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-8 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/50">
+        <div className="mt-8 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/60">
           <span>Giấy phép TTĐT: Đang xin cấp phép</span>
           <span>🇻🇳 techdrive.vn</span>
         </div>
