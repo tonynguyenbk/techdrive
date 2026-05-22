@@ -451,3 +451,105 @@ Nếu gặp quyết định thiết kế hoặc kỹ thuật mà chưa được 
 ---
 
 *File này là living document — sẽ được cập nhật khi có convention mới.*
+
+---
+
+## 9. DESIGN DECISIONS ĐÃ IMPLEMENT
+
+> Ghi lại các quyết định thiết kế thực tế đã được chốt trong quá trình phát triển.
+
+### 9.1. Màu sắc thực tế (overrides design tokens gốc)
+
+| Vị trí | Token/CSS | Giá trị |
+|--------|-----------|---------|
+| Footer background | hardcoded | `#071222` (navy đậm) |
+| Header background | hardcoded | `bg-surface-card/95` (theo theme) |
+| Logo DRIVE (light mode) | pixel trong PNG | `#071222` (đồng màu footer) |
+| Logo DRIVE (dark mode) | pixel trong PNG | `#ffffff` |
+| Brand primary | `--color-primary` | `#DC2626` |
+
+### 9.2. Header
+
+```
+Height:      h-20 (80px)
+Logo height: h-14 (56px)
+Nav text:    0.9375rem (15px), px-3.5 py-2
+Container:   max-w-[1200px] mx-auto px-5
+Background:  bg-surface-card/95 + backdrop-blur-md (theo theme sáng/tối)
+```
+
+**Logo behavior:**
+- Light mode → `/logo.png` (TECH đỏ, DRIVE + nét vẽ ô tô màu `#071222`)
+- Dark mode  → `/logo-dark.png` (TECH đỏ, DRIVE + nét vẽ ô tô trắng)
+- Chuyển đổi bằng CSS `dark:hidden` / `hidden dark:block` (không dùng JS)
+
+### 9.3. Footer
+
+```
+Background:  #071222
+Text hierarchy:
+  - Nav links:          text-white/75 → hover text-white
+  - Mô tả thương hiệu: text-white/70
+  - Social icons:       text-white/60 → hover màu brand
+  - Hãng xe:           text-white/60 → hover text-primary
+  - Label nhỏ:         text-white/50
+  - Bottom bar:        text-white/50
+  - Divider:           border-white/10
+
+Brand "TechDrive":
+  - "Tech" → text-primary (#DC2626)
+  - "Drive" → text-white (luôn trắng, vì nền footer luôn tối)
+```
+
+### 9.4. Navigation (NavItems)
+
+- **Animation**: Framer Motion `layoutId="nav-pill"` — pill trượt giữa các item
+- **Màu chữ**: CSS variables (`--color-text-primary/secondary`) — tự động đổi theo theme
+- **Pill background**: `--color-surface-elevated` + border `--color-surface-border`
+- **Active**: `--color-primary` (đỏ)
+
+### 9.5. Mobile Menu
+
+- Dùng `ReactDOM.createPortal` render vào `document.body`
+- **Lý do**: `backdrop-blur` trên header tạo CSS stacking context, phá vỡ `position: fixed` của drawer
+- Background: `#111111` (hardcoded, luôn tối)
+- z-index: overlay `9998`, drawer `9999`
+
+### 9.6. Theme System
+
+```typescript
+// providers/ThemeProvider.tsx
+<NextThemesProvider
+  attribute="class"        // thêm class .dark / .light vào <html>
+  defaultTheme="dark"
+  enableSystem
+  disableTransitionOnChange  // tắt CSS transition khi đổi theme → switch tức thì
+>
+```
+
+```css
+/* globals.css — BẮT BUỘC cho Tailwind v4 */
+/* Tailwind v4 mặc định dùng prefers-color-scheme, không phải .dark class */
+@variant dark (&:where(.dark, .dark *));
+```
+
+> **Quan trọng:** Nếu bỏ dòng `@variant dark` này, tất cả `dark:` utilities
+> sẽ không hoạt động theo next-themes mà theo OS preference.
+
+### 9.7. Logo files
+
+```
+public/logo.png       — Light mode: nền trắng/trong suốt, DRIVE màu #071222
+public/logo-dark.png  — Dark mode:  nền trong suốt, DRIVE màu trắng
+```
+
+Để thay đổi màu pixel trong file PNG, dùng script PowerShell + .NET System.Drawing:
+```powershell
+Add-Type -AssemblyName System.Drawing
+$bytes = [System.IO.File]::ReadAllBytes("public/logo.png")
+$ms = [System.IO.MemoryStream]::new($bytes)
+$bmp = [System.Drawing.Bitmap]::new($ms)
+# Loop pixels, thay dark pixels bằng màu mới
+$bmp.Save("public/logo_tmp.png", [System.Drawing.Imaging.ImageFormat]::Png)
+Move-Item -Force logo_tmp.png logo.png
+```
