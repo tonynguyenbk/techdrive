@@ -3,7 +3,6 @@ import { Link } from "@/i18n/navigation";
 import { mainNav } from "@/config/navigation";
 import { auth } from "@/auth";
 import { Logo } from "./Logo";
-import { LanguageSwitcher } from "./LanguageSwitcher";
 import { MobileMenu } from "./MobileMenu";
 import { ThemeToggle } from "./ThemeToggle";
 import { SearchDialog } from "./SearchDialog";
@@ -36,8 +35,7 @@ export async function Header() {
         <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
           <SearchDialog />
           <ThemeToggle />
-          <LanguageSwitcher />
-          {session?.user ? (
+{session?.user ? (
             <UserMenu user={session.user} />
           ) : (
             <LoginButton />
