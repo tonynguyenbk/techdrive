@@ -31,7 +31,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
   return (
     <main className="flex-1">
-      <div className="max-w-[1200px] mx-auto px-4 md:px-5 py-6 flex flex-col gap-10">
+      <div className="max-w-[1400px] mx-auto px-4 md:px-5 py-6 flex flex-col gap-10">
 
         {/* ① HERO */}
         {featuredArticle && (

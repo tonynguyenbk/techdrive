@@ -18,7 +18,7 @@ export async function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-surface-border bg-surface-card/95 backdrop-blur-md">
-      <div className="max-w-[1200px] mx-auto px-5 h-20 flex items-center justify-between gap-6">
+      <div className="max-w-[1400px] mx-auto px-5 h-20 flex items-center justify-between gap-6">
 
         {/* Logo */}
         <Link href="/" className="flex-shrink-0 select-none">

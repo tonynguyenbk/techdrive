@@ -473,6 +473,10 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
           preset: 'defaultHtml';
         }
       >;
+    cover_url: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 500;
+      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

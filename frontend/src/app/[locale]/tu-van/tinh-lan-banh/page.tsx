@@ -26,7 +26,7 @@ export default async function TinhLanBanhPage({ params }: Props) {
 
   return (
     <main className="flex-1">
-      <div className="max-w-[1200px] mx-auto px-4 md:px-5 py-6">
+      <div className="max-w-[1400px] mx-auto px-4 md:px-5 py-6">
 
         {/* Breadcrumb */}
         <nav className="flex items-center gap-1.5 text-xs text-text-muted mb-5">

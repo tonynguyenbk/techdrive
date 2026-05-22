@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Select-String \"LISTEN\")",
+      "Bash(Select-String \"1337|1338|3000|3001\")",
+      "PowerShell(Invoke-RestMethod \"http://localhost:1337/api/articles?filters[slug_vi][$eq]=lamborghini-urus-se-tettonero-capsule&populate[featured_image][fields][0]=url&populate[featured_image][fields][1]=name\" | ConvertTo-Json -Depth 10)",
+      "Bash(npx tsc *)",
+      "Bash(npm install *)"
+    ]
+  }
+}
