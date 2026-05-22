@@ -35,7 +35,8 @@ export async function Header() {
         <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
           <SearchDialog />
           <ThemeToggle />
-{session?.user ? (
+          <div className="hidden md:block w-px h-4 mx-1 bg-surface-border" />
+          {session?.user ? (
             <UserMenu user={session.user} />
           ) : (
             <LoginButton />
