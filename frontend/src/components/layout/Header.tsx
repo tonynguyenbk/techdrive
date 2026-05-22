@@ -1,15 +1,19 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { mainNav } from "@/config/navigation";
+import { auth } from "@/auth";
 import { Logo } from "./Logo";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { MobileMenu } from "./MobileMenu";
 import { ThemeToggle } from "./ThemeToggle";
 import { SearchDialog } from "./SearchDialog";
 import { NavItems } from "./NavItems";
+import { LoginButton } from "@/components/auth/LoginButton";
+import { UserMenu } from "@/components/auth/UserMenu";
 
 export async function Header() {
   const t = await getTranslations("nav");
+  const session = await auth();
 
   const navItems = mainNav.map(({ key, href }) => ({
     label: t(key),
@@ -33,6 +37,11 @@ export async function Header() {
           <SearchDialog />
           <ThemeToggle />
           <LanguageSwitcher />
+          {session?.user ? (
+            <UserMenu user={session.user} />
+          ) : (
+            <LoginButton />
+          )}
           <MobileMenu navItems={navItems} />
         </div>
       </div>
