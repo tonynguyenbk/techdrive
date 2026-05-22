@@ -30,7 +30,7 @@ export function NavItems({ items }: { items: NavItem[] }) {
             key={href}
             href={href as "/"}
             onMouseEnter={() => setHovered(href)}
-            className="relative px-3 py-1.5 rounded-md text-sm font-medium transition-colors duration-150 select-none"
+            className="relative px-3.5 py-2 rounded-md text-[0.9375rem] font-medium transition-colors duration-150 select-none"
             style={{ color: active ? "var(--color-primary)" : hovered === href ? "var(--color-text-primary)" : "var(--color-text-secondary)" }}
           >
             {showPill && (
