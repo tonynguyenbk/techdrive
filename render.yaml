@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: techdrive-strapi
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    healthCheckPath: /api/articles?pagination[limit]=1
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: 20.11.0
+      - key: HOST
+        value: 0.0.0.0
+      - key: PORT
+        value: 10000
+      # Sensitive vars — set manually in Render dashboard:
+      # DATABASE_URL
+      # APP_KEYS
+      # API_TOKEN_SALT
+      # ADMIN_JWT_SECRET
+      # JWT_SECRET
+      # CLOUDINARY_NAME
+      # CLOUDINARY_KEY
+      # CLOUDINARY_SECRET
