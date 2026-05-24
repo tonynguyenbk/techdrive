@@ -35,7 +35,7 @@ export async function fetchStrapi<T>(
 ): Promise<T> {
   const res = await fetch(`${STRAPI_URL}/api${path}`, {
     headers: { "Content-Type": "application/json" },
-    next: { revalidate: 60 },
+    next: { revalidate: 600 },
     ...init,
   });
   if (!res.ok) throw new Error(`Strapi ${res.status}: ${path}`);
