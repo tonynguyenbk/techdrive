@@ -156,8 +156,9 @@ function parseFields(text) {
 
   // Combined list of all markers for boundary detection
   const allMarkers = [...singleLineFields, ...scoreFields, ...multiLineFields];
+  // Match both: **FIELD:** (plain text with asterisks) and FIELD: (rich text paste from Claude)
   const markerPattern = new RegExp(
-    "\\*\\*(" + allMarkers.join("|") + ")\\*\\*:?",
+    "(?:\\*\\*)?(" + allMarkers.join("|") + ")(?:\\*\\*)?:",
     "g"
   );
 
@@ -293,6 +294,7 @@ function esc(text) {
 function buildPayload(fields, publishNow) {
   const data = {
     title_vi: fields.title_vi,
+    slug_vi: generateSlug(fields.title_vi),
     title_en: fields.title_en || null,
     excerpt_vi: fields.excerpt_vi || null,
     excerpt_en: fields.excerpt_en || null,
@@ -314,13 +316,36 @@ function buildPayload(fields, publishNow) {
     reading_time_minutes: fields.reading_time_minutes || 5,
     meta_title: fields.meta_title || fields.title_vi?.substring(0, 60) || null,
     meta_description: fields.meta_description || fields.excerpt_vi?.substring(0, 160) || null,
-    author: DEFAULT_AUTHOR_ID,
   };
 
   // Remove null values to avoid overwriting existing data
   Object.keys(data).forEach((k) => { if (data[k] === null || data[k] === undefined) delete data[k]; });
 
   return { data, status: publishNow ? "published" : "draft" };
+}
+
+function generateSlug(text) {
+  var s = text.toLowerCase();
+  // Vietnamese tones and base chars → ASCII
+  var replacements = [
+    [/[àáâãäåăắặằẳẵấầẩẫậ]/g, 'a'],
+    [/[èéêëếềểễệ]/g, 'e'],
+    [/[ìíîïị]/g, 'i'],
+    [/[òóôõöøơốồổỗộớờởỡợ]/g, 'o'],
+    [/[ùúûüưứừửữự]/g, 'u'],
+    [/[ýÿỳỵỷỹ]/g, 'y'],
+    [/[ñ]/g, 'n'],
+    [/[ç]/g, 'c'],
+    [/[đ]/g, 'd'],
+  ];
+  for (var i = 0; i < replacements.length; i++) {
+    s = s.replace(replacements[i][0], replacements[i][1]);
+  }
+  return s
+    .replace(/[^a-z0-9\s-]/g, '')
+    .trim()
+    .replace(/[\s_]+/g, '-')
+    .replace(/-+/g, '-');
 }
 
 function mapCategory(raw) {
