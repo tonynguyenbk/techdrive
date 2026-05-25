@@ -5,6 +5,7 @@ import { routing } from "@/i18n/routing";
 import { QueryProvider } from "@/providers/QueryProvider";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { NewsTicker } from "@/components/layout/NewsTicker";
 
 export default async function LocaleLayout({
   children,
@@ -25,6 +26,7 @@ export default async function LocaleLayout({
     <NextIntlClientProvider messages={messages}>
       <QueryProvider>
         <Header />
+        <NewsTicker />
         {children}
         <Footer />
       </QueryProvider>
