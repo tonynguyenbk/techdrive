@@ -151,7 +151,7 @@ export default async function CarDetailPage({ params }: Props) {
 
   return (
     <main className="flex-1">
-      <div className="max-w-[1400px] mx-auto px-4 py-6">
+      <div className="max-w-[1332px] mx-auto px-4 py-6">
 
         {/* Breadcrumb */}
         <nav className="flex items-center gap-1.5 text-xs text-text-muted mb-5 flex-wrap">

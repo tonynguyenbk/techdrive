@@ -47,7 +47,7 @@ export default async function ReviewsPage({ params, searchParams }: {
 
   return (
     <main className="flex-1">
-      <div className="max-w-[1400px] mx-auto px-4 py-6">
+      <div className="max-w-[1332px] mx-auto px-4 py-6">
 
         {/* Page header */}
         <div className="mb-6">
