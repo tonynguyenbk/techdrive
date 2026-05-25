@@ -91,6 +91,11 @@ body {
 .animate-ticker:hover {
   animation-play-state: paused;
 }
+@media (max-width: 768px) {
+  .animate-ticker {
+    animation-duration: 12s;
+  }
+}
 
 /* Article content renderer */
 .article-content {
