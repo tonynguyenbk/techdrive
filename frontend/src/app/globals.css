@@ -72,7 +72,7 @@ body {
 }
 
 * {
-  border-color: #1F1F1F;
+  border-color: var(--color-surface-border);
 }
 
 ::selection {
