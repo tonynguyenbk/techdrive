@@ -98,7 +98,7 @@ export default async function ReviewDetailPage({ params }: { params: Promise<Par
                 alt={title}
                 fill
                 priority
-                className="object-cover"
+                className="object-cover object-[center_30%]"
                 sizes="(max-width: 1200px) 100vw, 800px"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
