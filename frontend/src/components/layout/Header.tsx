@@ -9,6 +9,7 @@ import { SearchDialog } from "./SearchDialog";
 import { NavItems } from "./NavItems";
 import { LoginButton } from "@/components/auth/LoginButton";
 import { UserMenu } from "@/components/auth/UserMenu";
+import { NotificationBell } from "./NotificationBell";
 
 export async function Header() {
   const t = await getTranslations("nav");
@@ -34,6 +35,7 @@ export async function Header() {
         {/* Right controls */}
         <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
           <SearchDialog />
+          <NotificationBell />
           <ThemeToggle />
           <div className="hidden md:block w-px h-4 mx-1 bg-surface-border" />
           {session?.user ? (

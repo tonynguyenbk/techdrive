@@ -140,11 +140,37 @@
     },
     {
       "id": 7,
+      "module": "http:ActionSendData",
+      "version": 3,
+      "parameters": {
+        "handleErrors": true,
+        "useNewZLibDeCompression": true
+      },
+      "mapper": {
+        "url": "https://onesignal.com/api/v1/notifications",
+        "method": "POST",
+        "headers": [
+          { "name": "Authorization", "value": "Basic {{ONESIGNAL_REST_API_KEY}}" },
+          { "name": "Content-Type", "value": "application/json" }
+        ],
+        "bodyType": "raw",
+        "contentType": "application/json",
+        "body": "{\"app_id\":\"{{ONESIGNAL_APP_ID}}\",\"included_segments\":[\"All\"],\"headings\":{\"en\":\"TechDrive — Bài mới\",\"vi\":\"TechDrive — Bài mới\"},\"contents\":{\"en\":\"{{3.article_title}}\",\"vi\":\"{{3.article_title}}\"},\"url\":\"{{3.article_url}}\",\"chrome_web_image\":\"{{3.article_image}}\",\"firefox_icon\":\"https://techdrive.vn/favicon-32x32.png\"}",
+        "parseResponse": true
+      },
+      "metadata": {
+        "designer": { "x": 900, "y": 300 },
+        "displayName": "Send OneSignal Web Push",
+        "notes": "Gửi web push tới tất cả subscriber đã đăng ký tại techdrive.vn. Cần ONESIGNAL_REST_API_KEY và ONESIGNAL_APP_ID trong Make variables."
+      }
+    },
+    {
+      "id": 8,
       "module": "util:SetVariable",
       "version": 1,
       "mapper": {
         "name": "distribution_log",
-        "value": "Article '{{3.article_title}}' distributed at {{now}} — FB: {{4.id}}, Twitter: {{5.id}}"
+        "value": "Article '{{3.article_title}}' distributed at {{now}} — FB: {{4.id}}, Twitter: {{5.id}}, Push: {{7.id}}"
       },
       "metadata": {
         "designer": { "x": 1200, "y": 0 },
@@ -168,12 +194,17 @@
       "   - STRAPI_API_TOKEN: API token từ Strapi Settings → API Tokens",
       "   - FACEBOOK_PAGE_ID: ID trang Facebook",
       "   - TELEGRAM_CHANNEL_ID: ID channel Telegram (dạng -100xxxxxxxxx)",
-      "5. Test: Publish 1 bài trong Strapi → kiểm tra Make.com History"
+      "5. Cài đặt OneSignal variables:",
+      "   - ONESIGNAL_APP_ID: App ID từ OneSignal Dashboard → Settings → Keys & IDs",
+      "   - ONESIGNAL_REST_API_KEY: REST API Key từ cùng trang đó",
+      "6. Test: Publish 1 bài trong Strapi → kiểm tra Make.com History"
     ],
     "variables_needed": [
       "STRAPI_API_TOKEN",
       "FACEBOOK_PAGE_ID",
-      "TELEGRAM_CHANNEL_ID"
+      "TELEGRAM_CHANNEL_ID",
+      "ONESIGNAL_APP_ID",
+      "ONESIGNAL_REST_API_KEY"
     ],
     "connections_needed": [
       "Facebook Pages (kết nối với Page của TechDrive)",

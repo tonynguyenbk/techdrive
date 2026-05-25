@@ -4,6 +4,7 @@ import { getLocale } from "next-intl/server";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import { AuthProvider } from "@/providers/AuthProvider";
 import { AuthDialog } from "@/components/auth/AuthDialog";
+import { OneSignalProvider } from "@/providers/OneSignalProvider";
 import "./globals.css";
 
 const beVietnamPro = Be_Vietnam_Pro({
@@ -47,10 +48,12 @@ export default async function RootLayout({
     >
       <body className="min-h-full flex flex-col font-sans antialiased bg-surface text-text-primary">
         <ThemeProvider>
-          <AuthProvider>
-            {children}
-            <AuthDialog />
-          </AuthProvider>
+          <OneSignalProvider>
+            <AuthProvider>
+              {children}
+              <AuthDialog />
+            </AuthProvider>
+          </OneSignalProvider>
         </ThemeProvider>
         <script
           type="application/ld+json"
