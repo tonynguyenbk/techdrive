@@ -93,7 +93,7 @@ body {
 }
 @media (max-width: 768px) {
   .animate-ticker {
-    animation-duration: 12s;
+    animation-duration: 5s;
   }
 }
 
