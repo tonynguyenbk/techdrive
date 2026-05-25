@@ -1,0 +1,184 @@
+{
+  "name": "TechDrive — Auto Distribute New Article",
+  "description": "Triggered when a new article is published in Strapi. Posts to Facebook Page, X (Twitter), and sends Telegram notification.",
+  "version": 1,
+  "metadata": {
+    "instant": true,
+    "designer": {
+      "orphans": []
+    }
+  },
+  "flow": [
+    {
+      "id": 1,
+      "module": "gateway:CustomWebHook",
+      "version": 1,
+      "parameters": {
+        "hook": "{{STRAPI_WEBHOOK_HOOK_ID}}",
+        "maxResults": 1
+      },
+      "metadata": {
+        "designer": { "x": 0, "y": 0 },
+        "displayName": "Strapi: Article Published Webhook",
+        "notes": "Strapi gọi webhook này mỗi khi bài viết được publish. Cài đặt trong Strapi: Settings → Webhooks → Add Webhook → URL = Make.com webhook URL này → Event: entry.publish"
+      }
+    },
+    {
+      "id": 2,
+      "module": "http:ActionSendData",
+      "version": 3,
+      "parameters": {
+        "handleErrors": true,
+        "useNewZLibDeCompression": true
+      },
+      "mapper": {
+        "url": "https://techdrive-strapi.onrender.com/api/articles/{{1.entry.documentId}}?populate[0]=featured_image&populate[1]=author",
+        "method": "GET",
+        "headers": [
+          {
+            "name": "Authorization",
+            "value": "Bearer {{STRAPI_API_TOKEN}}"
+          }
+        ],
+        "bodyType": "raw",
+        "parseResponse": true
+      },
+      "metadata": {
+        "designer": { "x": 300, "y": 0 },
+        "displayName": "Fetch Full Article from Strapi",
+        "notes": "Lấy đầy đủ thông tin bài viết (ảnh, excerpt) để tạo social post"
+      }
+    },
+    {
+      "id": 3,
+      "module": "util:SetVariables",
+      "version": 1,
+      "mapper": {
+        "variables": [
+          {
+            "name": "article_title",
+            "value": "{{2.data.attributes.title_vi}}"
+          },
+          {
+            "name": "article_excerpt",
+            "value": "{{2.data.attributes.excerpt_vi}}"
+          },
+          {
+            "name": "article_slug",
+            "value": "{{2.data.attributes.slug_vi}}"
+          },
+          {
+            "name": "article_url",
+            "value": "https://techdrive.vn/tin-tuc/{{2.data.attributes.slug_vi}}"
+          },
+          {
+            "name": "article_image",
+            "value": "{{2.data.attributes.featured_image.data.attributes.url}}"
+          },
+          {
+            "name": "article_category",
+            "value": "{{2.data.attributes.category}}"
+          }
+        ]
+      },
+      "metadata": {
+        "designer": { "x": 600, "y": 0 },
+        "displayName": "Prepare Article Variables"
+      }
+    },
+    {
+      "id": 4,
+      "module": "facebook-pages:CreatePost",
+      "version": 1,
+      "parameters": {
+        "pageId": "{{FACEBOOK_PAGE_ID}}"
+      },
+      "mapper": {
+        "message": "{{3.article_title}}\n\n{{3.article_excerpt}}\n\n🔗 Đọc thêm: {{3.article_url}}\n\n#TechDrive #OtôViệtNam",
+        "link": "{{3.article_url}}"
+      },
+      "metadata": {
+        "designer": { "x": 900, "y": -150 },
+        "displayName": "Post to Facebook Page",
+        "notes": "Cần kết nối tài khoản Facebook Page trong Make.com Connections"
+      }
+    },
+    {
+      "id": 5,
+      "module": "twitter:CreateTweet",
+      "version": 2,
+      "parameters": {
+        "connection": "{{TWITTER_CONNECTION_ID}}"
+      },
+      "mapper": {
+        "status": "{{3.article_title}}\n\n{{if(length(3.article_excerpt) > 200, substring(3.article_excerpt, 0, 200) + '...', 3.article_excerpt)}}\n\n{{3.article_url}}\n\n#TechDrive #OtoVietNam"
+      },
+      "metadata": {
+        "designer": { "x": 900, "y": 0 },
+        "displayName": "Post to X (Twitter)",
+        "notes": "Cần kết nối tài khoản X (Twitter) trong Make.com Connections"
+      }
+    },
+    {
+      "id": 6,
+      "module": "telegram-bot:SendMessage",
+      "version": 1,
+      "parameters": {
+        "connection": "{{TELEGRAM_BOT_CONNECTION_ID}}"
+      },
+      "mapper": {
+        "chat_id": "{{TELEGRAM_CHANNEL_ID}}",
+        "text": "📰 *Bài mới trên TechDrive*\n\n*{{3.article_title}}*\n\n{{3.article_excerpt}}\n\n[Đọc bài →]({{3.article_url}})",
+        "parse_mode": "Markdown",
+        "disable_web_page_preview": false
+      },
+      "metadata": {
+        "designer": { "x": 900, "y": 150 },
+        "displayName": "Notify Telegram Channel",
+        "notes": "Dùng Telegram Bot để thông báo bài mới vào channel/group. Có thể dùng để thay thế Zalo OA (Zalo chưa có module chính thức trong Make.com)"
+      }
+    },
+    {
+      "id": 7,
+      "module": "util:SetVariable",
+      "version": 1,
+      "mapper": {
+        "name": "distribution_log",
+        "value": "Article '{{3.article_title}}' distributed at {{now}} — FB: {{4.id}}, Twitter: {{5.id}}"
+      },
+      "metadata": {
+        "designer": { "x": 1200, "y": 0 },
+        "displayName": "Log Distribution Result"
+      }
+    }
+  ],
+  "subflows": [],
+  "setup": {
+    "instructions": [
+      "1. Import file này vào Make.com: Create New Scenario → Import Blueprint",
+      "2. Cài đặt Connections:",
+      "   - Facebook Pages: kết nối trang Facebook của TechDrive",
+      "   - Twitter/X: kết nối tài khoản @TechDrive_vn",
+      "   - Telegram Bot: tạo bot qua @BotFather, thêm vào channel",
+      "3. Cài đặt Strapi Webhook:",
+      "   - Strapi Dashboard → Settings → Webhooks → Add Webhook",
+      "   - URL: [copy Webhook URL từ module đầu tiên trong Make.com]",
+      "   - Events: entry.publish (chỉ chọn Articles)",
+      "4. Cài đặt Variables trong Make.com (Settings → Variables):",
+      "   - STRAPI_API_TOKEN: API token từ Strapi Settings → API Tokens",
+      "   - FACEBOOK_PAGE_ID: ID trang Facebook",
+      "   - TELEGRAM_CHANNEL_ID: ID channel Telegram (dạng -100xxxxxxxxx)",
+      "5. Test: Publish 1 bài trong Strapi → kiểm tra Make.com History"
+    ],
+    "variables_needed": [
+      "STRAPI_API_TOKEN",
+      "FACEBOOK_PAGE_ID",
+      "TELEGRAM_CHANNEL_ID"
+    ],
+    "connections_needed": [
+      "Facebook Pages (kết nối với Page của TechDrive)",
+      "Twitter/X (kết nối với account TechDrive)",
+      "Telegram Bot (tạo bot qua @BotFather)"
+    ]
+  }
+}
