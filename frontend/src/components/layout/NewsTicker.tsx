@@ -41,7 +41,7 @@ export async function NewsTicker() {
 
   return (
     <div className="bg-surface-elevated border-b border-surface-border overflow-hidden">
-      <div className="max-w-screen-2xl mx-auto flex items-stretch">
+      <div className="max-w-[1400px] mx-auto flex items-stretch">
         {/* Label */}
         <div className="flex-shrink-0 flex items-center gap-1.5 bg-primary px-3 py-2 z-10">
           <span className="relative flex h-2 w-2">

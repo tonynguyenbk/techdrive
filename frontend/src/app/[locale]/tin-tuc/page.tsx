@@ -47,7 +47,7 @@ export default async function NewsPage({ params, searchParams }: {
 
   return (
     <main className="flex-1">
-      <div className="max-w-screen-2xl mx-auto px-4 py-6">
+      <div className="max-w-[1400px] mx-auto px-4 py-6">
 
         {/* Page header */}
         <div className="mb-6">

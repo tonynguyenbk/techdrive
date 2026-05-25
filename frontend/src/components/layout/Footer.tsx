@@ -12,7 +12,7 @@ export async function Footer() {
     <footer className="border-t border-surface-border mt-auto"
       style={{ background: "#071222" }}
     >
-      <div className="max-w-screen-2xl mx-auto px-4 py-10">
+      <div className="max-w-[1400px] mx-auto px-4 py-10">
         <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr] gap-8 md:gap-10">
 
           {/* Brand column */}

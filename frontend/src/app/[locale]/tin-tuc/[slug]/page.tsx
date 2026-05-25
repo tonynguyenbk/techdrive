@@ -87,7 +87,7 @@ export default async function ArticleDetailPage({ params }: { params: Promise<Pa
   return (
     <main className="flex-1">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <div className="max-w-screen-2xl mx-auto px-4 py-6">
+      <div className="max-w-[1400px] mx-auto px-4 py-6">
 
         {/* Breadcrumb */}
         <nav className="flex items-center gap-1.5 text-xs text-text-muted mb-5">

@@ -73,7 +73,7 @@ export default async function ReviewDetailPage({ params }: { params: Promise<Par
 
   return (
     <main className="flex-1">
-      <div className="max-w-screen-2xl mx-auto px-4 py-6">
+      <div className="max-w-[1400px] mx-auto px-4 py-6">
 
         {/* Breadcrumb */}
         <nav className="flex items-center gap-1.5 text-xs text-text-muted mb-5">
