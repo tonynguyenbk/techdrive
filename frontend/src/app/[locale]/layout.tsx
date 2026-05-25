@@ -25,8 +25,10 @@ export default async function LocaleLayout({
   return (
     <NextIntlClientProvider messages={messages}>
       <QueryProvider>
-        <Header />
-        <NewsTicker />
+        <div className="sticky top-0 z-50">
+          <Header />
+          <NewsTicker />
+        </div>
         {children}
         <Footer />
       </QueryProvider>
