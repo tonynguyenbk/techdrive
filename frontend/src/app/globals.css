@@ -97,6 +97,20 @@ body {
   }
 }
 
+/* Bell ring animation */
+@keyframes bell-ring {
+  0%   { transform: rotate(0deg); }
+  15%  { transform: rotate(20deg); }
+  30%  { transform: rotate(-18deg); }
+  45%  { transform: rotate(14deg); }
+  60%  { transform: rotate(-10deg); }
+  75%  { transform: rotate(6deg); }
+  100% { transform: rotate(0deg); }
+}
+.animate-bell-ring {
+  animation: bell-ring 0.8s ease-in-out;
+}
+
 /* Article content renderer */
 .article-content {
   font-size: 1.0625rem;
