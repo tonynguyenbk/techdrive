@@ -2,7 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { Bell } from "lucide-react";
-import OneSignal from "react-onesignal";
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const getOS = () => (window as any).OneSignal;
 
 export function NotificationBell() {
   const [mounted, setMounted] = useState(false);
@@ -14,27 +16,33 @@ export function NotificationBell() {
     if (typeof Notification === "undefined") return;
     setMounted(true);
 
-    const t = setTimeout(() => {
-      setSubscribed(!!OneSignal.User.PushSubscription.optedIn);
-    }, 1500);
+    const check = () => {
+      const OS = getOS();
+      if (OS?.User?.PushSubscription) {
+        setSubscribed(!!OS.User.PushSubscription.optedIn);
+        OS.User.PushSubscription.addEventListener("change", (e: any) => {
+          setSubscribed(!!e.current.optedIn);
+        });
+      }
+    };
 
-    OneSignal.User.PushSubscription.addEventListener("change", (event) => {
-      setSubscribed(!!event.current.optedIn);
-    });
-
+    const t = setTimeout(check, 2000);
     return () => clearTimeout(t);
   }, []);
 
   if (!mounted) return <div className="w-8 h-8" />;
 
   async function toggle() {
+    const OS = getOS();
+    if (!OS) return;
     try {
       if (subscribed) {
-        OneSignal.User.PushSubscription.optOut();
+        OS.User.PushSubscription.optOut();
         setSubscribed(false);
       } else {
-        await OneSignal.Notifications.requestPermission();
-        const opted = !!OneSignal.User.PushSubscription.optedIn;
+        await OS.Notifications.requestPermission();
+        await OS.User.PushSubscription.optIn();
+        const opted = !!OS.User.PushSubscription.optedIn;
         setSubscribed(opted);
         if (opted) {
           setJustSubscribed(true);
@@ -62,8 +70,6 @@ export function NotificationBell() {
       title={label}
     >
       <Bell size={18} className={subscribed ? "fill-current" : ""} />
-
-      {/* Red dot when subscribed */}
       {subscribed && (
         <span className="absolute top-1 right-1 w-2 h-2 bg-primary rounded-full border-2 border-surface-card" />
       )}

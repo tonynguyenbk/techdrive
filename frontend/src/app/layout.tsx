@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Be_Vietnam_Pro } from "next/font/google";
 import { getLocale } from "next-intl/server";
+import Script from "next/script";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import { AuthProvider } from "@/providers/AuthProvider";
 import { AuthDialog } from "@/components/auth/AuthDialog";
@@ -47,6 +48,12 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col font-sans antialiased bg-surface text-text-primary">
+        {process.env.NEXT_PUBLIC_ONESIGNAL_APP_ID && (
+          <Script
+            src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js"
+            strategy="lazyOnload"
+          />
+        )}
         <ThemeProvider>
           <OneSignalProvider>
             <AuthProvider>
