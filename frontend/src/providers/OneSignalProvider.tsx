@@ -17,12 +17,7 @@ export function OneSignalProvider({ children }: { children: React.ReactNode }) {
     const w = window as any;
     w.OneSignalDeferred = w.OneSignalDeferred || [];
     w.OneSignalDeferred.push(async (OneSignal: any) => {
-      await OneSignal.init({
-        appId,
-        serviceWorkerPath: "/OneSignalSDKWorker.js",
-        serviceWorkerParam: { scope: "/" },
-        notifyButton: { enable: false },
-      });
+      await OneSignal.init({ appId });
     });
   }, []);
 
