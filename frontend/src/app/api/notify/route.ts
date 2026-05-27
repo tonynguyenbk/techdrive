@@ -8,7 +8,7 @@ export async function POST(req: NextRequest) {
   // Optional secret check
   if (WEBHOOK_SECRET) {
     const secret = req.headers.get("x-webhook-secret");
-    if (secret !== WEBHOOK_SECRET) {
+    if (secret?.trim() !== WEBHOOK_SECRET.trim()) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
   }
