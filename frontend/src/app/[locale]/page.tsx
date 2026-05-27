@@ -1,9 +1,9 @@
 import { getTranslations } from "next-intl/server";
 import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { getFeaturedArticle, getArticles, getMostViewed, getReviews } from "@/lib/api/articles";
+import { getArticles, getMostViewed, getReviews } from "@/lib/api/articles";
 import { getPriceBrands } from "@/lib/api/cars";
-import { ArticleHero } from "@/components/articles/ArticleHero";
+import { HeroCarousel } from "@/components/articles/HeroCarousel";
 import { ArticleCard } from "@/components/articles/ArticleCard";
 import { MostViewedSidebar } from "@/components/articles/MostViewedSidebar";
 import { PriceCard } from "@/components/cars/PriceCard";
@@ -21,8 +21,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const lang = locale === "en" ? "en" : "vi";
   const now = new Date();
 
-  const [featuredArticle, { articles: latestNews }, { articles: latestReviews }, mostViewed, priceBrands] = await Promise.all([
-    getFeaturedArticle(),
+  const [{ articles: latestNews }, { articles: latestReviews }, mostViewed, priceBrands] = await Promise.all([
     getArticles({ pageSize: 4, category: "news" }),
     getReviews({ pageSize: 3 }),
     getMostViewed(5),
@@ -33,10 +32,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     <main className="flex-1">
       <div className="max-w-[1332px] mx-auto px-4 py-6 flex flex-col gap-10">
 
-        {/* ① HERO */}
-        {featuredArticle && (
+        {/* ① HERO CAROUSEL */}
+        {mostViewed.length > 0 && (
           <section>
-            <ArticleHero article={featuredArticle} locale={locale} />
+            <HeroCarousel articles={mostViewed} locale={locale} />
           </section>
         )}
 
