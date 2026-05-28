@@ -167,6 +167,17 @@ export async function getFeaturedArticle(): Promise<ArticleCard | null> {
   }
 }
 
+export async function getFeaturedArticles(limit = 5): Promise<ArticleCard[]> {
+  try {
+    const res = await fetchStrapi<StrapiListResponse<StrapiArticle>>(
+      `/articles?filters[is_featured][$eq]=true&filters[publishedAt][$notNull]=true&sort=publishedAt:desc&pagination[limit]=${limit}&${POPULATE}`
+    );
+    return res.data.map(toArticleCard);
+  } catch {
+    return [];
+  }
+}
+
 export async function getArticles(options: {
   page?: number;
   pageSize?: number;

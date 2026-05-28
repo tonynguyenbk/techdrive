@@ -1,7 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { setRequestLocale } from "next-intl/server";
-import { Link } from "@/i18n/navigation";
-import { getArticles, getMostViewed, getReviews } from "@/lib/api/articles";
+import { getArticles, getFeaturedArticles, getMostViewed, getReviews } from "@/lib/api/articles";
 import { getPriceBrands } from "@/lib/api/cars";
 import { HeroCarousel } from "@/components/articles/HeroCarousel";
 import { ArticleCard } from "@/components/articles/ArticleCard";
@@ -16,14 +15,14 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   setRequestLocale(locale);
 
   const t = await getTranslations("home");
-  const tNav = await getTranslations("nav");
 
   const lang = locale === "en" ? "en" : "vi";
   const now = new Date();
 
-  const [{ articles: latestNews }, { articles: latestReviews }, mostViewed, priceBrands] = await Promise.all([
+  const [{ articles: latestNews }, { articles: latestReviews }, featuredArticles, mostViewed, priceBrands] = await Promise.all([
     getArticles({ pageSize: 4, category: "news" }),
     getReviews({ pageSize: 3 }),
+    getFeaturedArticles(5),
     getMostViewed(5),
     getPriceBrands(8),
   ]);
@@ -33,9 +32,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <div className="max-w-[1332px] mx-auto px-4 py-6 flex flex-col gap-10">
 
         {/* ① HERO CAROUSEL */}
-        {mostViewed.length > 0 && (
+        {(featuredArticles.length > 0 || mostViewed.length > 0) && (
           <section>
-            <HeroCarousel articles={mostViewed} locale={locale} />
+            <HeroCarousel articles={featuredArticles.length > 0 ? featuredArticles : mostViewed} locale={locale} />
           </section>
         )}
 
