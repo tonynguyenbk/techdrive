@@ -19,6 +19,7 @@ type Props = {
 export function HeroCarousel({ articles, locale = "vi" }: Props) {
   const [current, setCurrent] = useState(0);
   const [paused, setPaused] = useState(false);
+  const dirRef = useRef<1 | -1>(1); // 1 = forward, -1 = backward
   const touchStartX = useRef<number | null>(null);
   const lang = locale === "en" ? "en" : "vi";
   const count = articles.length;
@@ -30,11 +31,20 @@ export function HeroCarousel({ articles, locale = "vi" }: Props) {
   const next = useCallback(() => go(current + 1), [go, current]);
   const prev = useCallback(() => go(current - 1), [go, current]);
 
+  const advance = useCallback(() => {
+    setCurrent(c => {
+      const next = c + dirRef.current;
+      if (next >= count - 1) dirRef.current = -1;
+      if (next <= 0) dirRef.current = 1;
+      return Math.min(Math.max(next, 0), count - 1);
+    });
+  }, [count]);
+
   useEffect(() => {
     if (paused || count <= 1) return;
-    const t = setInterval(next, INTERVAL_MS);
+    const t = setInterval(advance, INTERVAL_MS);
     return () => clearInterval(t);
-  }, [next, paused, count]);
+  }, [advance, paused, count]);
 
   if (!articles.length) return null;
 
