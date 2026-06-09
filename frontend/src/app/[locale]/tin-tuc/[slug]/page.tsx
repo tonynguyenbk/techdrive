@@ -11,6 +11,7 @@ import { MostViewedSidebar } from "@/components/articles/MostViewedSidebar";
 import { ArticleBadge } from "@/components/articles/ArticleBadge";
 import { GalleryGrid } from "@/components/ui/Lightbox";
 import { ShareButtons } from "@/components/shared/ShareButtons";
+import { NewsletterForm } from "@/components/shared/NewsletterForm";
 import { Eye, Clock, ChevronRight } from "lucide-react";
 import { formatNumber } from "@/lib/utils/format";
 
@@ -220,6 +221,8 @@ export default async function ArticleDetailPage({ params }: { params: Promise<Pa
           {/* Sidebar */}
           <aside className="flex flex-col gap-6">
             <MostViewedSidebar items={mostViewed} locale={locale} />
+
+            <NewsletterForm lang={lang} />
 
             {/* Related articles */}
             {relatedArticles.length > 0 && (

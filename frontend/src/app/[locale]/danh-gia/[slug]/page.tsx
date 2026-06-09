@@ -11,6 +11,7 @@ import { ArticleBadge } from "@/components/articles/ArticleBadge";
 import { ScoreBreakdown } from "@/components/articles/ScoreBreakdown";
 import { ProsCons } from "@/components/articles/ProsCons";
 import { ShareButtons } from "@/components/shared/ShareButtons";
+import { NewsletterForm } from "@/components/shared/NewsletterForm";
 import { Eye, Clock, ChevronRight } from "lucide-react";
 
 type Params = { locale: string; slug: string };
@@ -243,6 +244,8 @@ export default async function ReviewDetailPage({ params }: { params: Promise<Par
           {/* Sidebar */}
           <aside className="flex flex-col gap-6">
             <MostViewedSidebar items={mostViewed} locale={locale} />
+
+            <NewsletterForm lang={lang} />
 
             {/* More reviews */}
             {filteredRelated.length > 0 && (
