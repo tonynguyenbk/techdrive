@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Be_Vietnam_Pro } from "next/font/google";
 import { getLocale } from "next-intl/server";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import { AuthProvider } from "@/providers/AuthProvider";
 import { AuthDialog } from "@/components/auth/AuthDialog";
@@ -62,6 +64,8 @@ export default async function RootLayout({
             </AuthProvider>
           </OneSignalProvider>
         </ThemeProvider>
+        <Analytics />
+        <SpeedInsights />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

@@ -10,6 +10,7 @@ import { MostViewedSidebar } from "@/components/articles/MostViewedSidebar";
 import { ArticleBadge } from "@/components/articles/ArticleBadge";
 import { ScoreBreakdown } from "@/components/articles/ScoreBreakdown";
 import { ProsCons } from "@/components/articles/ProsCons";
+import { ShareButtons } from "@/components/shared/ShareButtons";
 import { Eye, Clock, ChevronRight } from "lucide-react";
 
 type Params = { locale: string; slug: string };
@@ -71,8 +72,34 @@ export default async function ReviewDetailPage({ params }: { params: Promise<Par
 
   const filteredRelated = relatedReviews.filter((a) => a.id !== article.id).slice(0, 3);
 
+  const canonicalUrl = `https://techdrive.vn${locale === "en" ? "/en" : ""}/danh-gia/${article.slug_vi}`;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Review",
+    "headline": title,
+    "description": excerpt,
+    "image": article.featured_image ? [article.featured_image] : [],
+    "datePublished": article.published_at,
+    "dateModified": article.updated_at,
+    "author": {
+      "@type": "Person",
+      "name": article.author?.name ?? "TechDrive",
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "TechDrive",
+      "url": "https://techdrive.vn",
+      "logo": { "@type": "ImageObject", "url": "https://techdrive.vn/logo.png" },
+    },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": canonicalUrl },
+    ...(article.score !== null
+      ? { "reviewRating": { "@type": "Rating", "ratingValue": article.score, "bestRating": 10 } }
+      : {}),
+  };
+
   return (
     <main className="flex-1">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className="max-w-[1332px] mx-auto px-4 py-6">
 
         {/* Breadcrumb */}
@@ -192,6 +219,9 @@ export default async function ReviewDetailPage({ params }: { params: Promise<Par
                 ))}
               </div>
             )}
+
+            {/* Share buttons */}
+            <ShareButtons url={canonicalUrl} title={title ?? ""} lang={lang} />
 
             {/* Author bio */}
             <div className="mt-8 p-5 rounded-xl bg-surface-card border border-surface-border">
