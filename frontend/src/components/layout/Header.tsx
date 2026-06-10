@@ -22,11 +22,11 @@ export async function Header() {
 
   return (
     <header className="border-b border-surface-border bg-surface-card/95 backdrop-blur-md">
-      <div className="max-w-[1332px] mx-auto px-4 h-20 flex items-center justify-between gap-6">
+      <div className="max-w-[1332px] mx-auto px-4 h-24 md:h-30 flex items-center justify-between gap-6">
 
         {/* Logo */}
         <Link href="/" className="flex-shrink-0 select-none">
-          <Logo className="h-14 w-auto" />
+          <Logo className="h-16 md:h-21 w-auto" />
         </Link>
 
         {/* Desktop navigation */}
