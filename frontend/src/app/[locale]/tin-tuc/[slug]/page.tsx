@@ -12,6 +12,7 @@ import { ArticleBadge } from "@/components/articles/ArticleBadge";
 import { GalleryGrid } from "@/components/ui/Lightbox";
 import { ShareButtons } from "@/components/shared/ShareButtons";
 import { NewsletterForm } from "@/components/shared/NewsletterForm";
+import { BookmarkButton } from "@/components/articles/BookmarkButton";
 import { Eye, Clock, ChevronRight } from "lucide-react";
 import { formatNumber } from "@/lib/utils/format";
 
@@ -157,6 +158,21 @@ export default async function ArticleDetailPage({ params }: { params: Promise<Pa
                 <Eye size={12} />
                 {formatNumber(article.view_count)}
               </span>
+              <BookmarkButton
+                article={{
+                  id: article.id,
+                  title_vi: article.title_vi,
+                  title_en: article.title_en,
+                  slug_vi: article.slug_vi,
+                  slug_en: article.slug_en,
+                  featured_image: article.featured_image,
+                  category: article.category,
+                  review_badge: article.review_badge,
+                  score: article.score,
+                }}
+                lang={lang}
+                className="ml-auto"
+              />
             </div>
 
             {/* Excerpt */}

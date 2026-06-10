@@ -189,8 +189,8 @@ export async function Footer() {
             </h4>
             <ul className="flex flex-col gap-2.5">
               {[
-                { label: "Quảng cáo", href: "/quang-cao" },
-                { label: "Tuyển dụng", href: "/tuyen-dung" },
+                { label: "Quảng cáo", href: "/lien-he#quang-cao" },
+                { label: "Tuyển dụng", href: "/lien-he#tuyen-dung" },
                 { label: "Liên hệ tòa soạn", href: "/lien-he" },
                 { label: "Chính sách bảo mật", href: "/chinh-sach-bao-mat" },
                 { label: "Giới thiệu", href: "/gioi-thieu" },

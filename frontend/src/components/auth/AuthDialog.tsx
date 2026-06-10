@@ -66,7 +66,7 @@ export function AuthDialog() {
                 Đăng nhập <span className="text-primary">TechDrive</span>
               </h2>
               <p className="text-sm text-text-muted mt-1">
-                Lưu bài viết, theo dõi giá xe yêu thích
+                Lưu bài viết, so sánh xe, quản lý tài khoản của bạn
               </p>
             </div>
             <button
@@ -83,7 +83,7 @@ export function AuthDialog() {
             {[
               { icon: "🔖", label: "Lưu bài viết" },
               { icon: "📊", label: "So sánh xe" },
-              { icon: "🔔", label: "Theo dõi giá" },
+              { icon: "👤", label: "Hồ sơ cá nhân" },
             ].map(({ icon, label }) => (
               <div
                 key={label}

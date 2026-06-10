@@ -28,6 +28,11 @@ export const routing = defineRouting({
     "/video": "/video",
     "/dai-ly": { vi: "/dai-ly", en: "/dealers" },
     "/giai-thuong": { vi: "/giai-thuong", en: "/awards" },
+    "/gioi-thieu": { vi: "/gioi-thieu", en: "/about" },
+    "/lien-he": { vi: "/lien-he", en: "/contact" },
+    "/chinh-sach-bao-mat": { vi: "/chinh-sach-bao-mat", en: "/privacy-policy" },
+    "/saved": "/saved",
+    "/settings": "/settings",
   },
 });
 
