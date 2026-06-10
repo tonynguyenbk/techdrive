@@ -49,8 +49,8 @@ const tools = [
     titleEn: "Find a Dealer",
     descVi: "Tìm đại lý chính hãng gần bạn nhất theo thương hiệu và khu vực.",
     descEn: "Find the nearest authorized dealer by brand and location.",
-    href: "/tu-van",
-    soon: true,
+    href: "/dai-ly",
+    soon: false,
   },
   {
     icon: Lightbulb,

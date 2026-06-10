@@ -54,7 +54,7 @@ export default async function VideoPage({ params }: Props) {
               : "TechDrive will soon launch a video channel featuring test drives, reviews and real-world car comparisons."}
           </p>
           <a
-            href="https://youtube.com"
+            href="https://www.youtube.com/@TechDriveAuto"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 px-5 py-2.5 rounded-lg bg-red-600 hover:bg-red-700 text-white text-sm font-semibold transition-colors"

@@ -5,6 +5,7 @@ import { ArticleCard } from "@/components/articles/ArticleCard";
 import { ArticleHero } from "@/components/articles/ArticleHero";
 import { MostViewedSidebar } from "@/components/articles/MostViewedSidebar";
 import { NewsFilterBar } from "@/components/articles/NewsFilterBar";
+import { NewsletterForm } from "@/components/shared/NewsletterForm";
 
 export const metadata: Metadata = {
   title: "Tin tức",
@@ -131,16 +132,7 @@ export default async function NewsPage({ params, searchParams }: {
                   ? "Tổng hợp tin tức xe hơi nổi bật nhất tuần"
                   : "Top automotive news of the week"}
               </p>
-              <div className="flex gap-2">
-                <input
-                  type="email"
-                  placeholder={lang === "vi" ? "Email của bạn" : "Your email"}
-                  className="flex-1 bg-surface-elevated border border-surface-border rounded-lg px-3 py-1.5 text-xs text-text-primary placeholder:text-text-muted focus:outline-none focus:border-primary"
-                />
-                <button className="bg-primary hover:bg-primary-dark text-white text-xs font-semibold px-3 py-1.5 rounded-lg transition-colors cursor-pointer">
-                  {lang === "vi" ? "Đăng ký" : "Subscribe"}
-                </button>
-              </div>
+              <NewsletterForm lang={lang} variant="inline" />
             </div>
           </aside>
         </div>
